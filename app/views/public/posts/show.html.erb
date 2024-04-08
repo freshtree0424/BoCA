@@ -1,11 +1,13 @@
-<h4>投稿詳細画面</h4>
-       <% if @post.user == current_user %>
-         <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success  edit_book_#{@post.id}" %></td>
-         <td><%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}"%></td>
-       <% end %>
-    </h2>
-
-    <table class='table'>
+<div class="container">
+  <h4>投稿詳細画面
+    <% if @post.user == current_user %>
+      <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success  edit_book_#{@post.id}" %></td>
+      <td><%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}"%></td>
+    <% end %>
+  </h4>
+  <div class="row">
+    <div class="col">
+          <table class='table'>
      <tr>
        <td align="center">
            <%= link_to(@post.user) do %>
@@ -27,3 +29,6 @@
  <%#   <%= render 'book_comments/book_comment', book: @book %>
  <%#  </div>
  <%#   <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
+    </div>
+  </div>
+</div>
