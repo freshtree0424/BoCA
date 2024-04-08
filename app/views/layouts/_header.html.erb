@@ -1,0 +1,137 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>BoCA</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+      <% if admin_signed_in? %>
+      <!-- 管理者がログインしている場合 -->
+        <li class="nav-item">
+          <%= link_to admin_posts_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-gift"></i>
+            <span>投稿一覧</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_users_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-users"></i>
+            <span>ユーザー一覧</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-regular fa-file-lines"></i>
+            <span>投稿一覧</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-tags"></i>
+            <span>仮パス(ルート)</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>ログアウト</span>
+          <% end %>
+        </li>
+      <% elsif user_signed_in? %>
+      <!-- ユーザーがログインしている場合 -->
+        <li class="nav-item">
+          <%= link_to posts_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-regular fa-address-card"></i>
+            <span>マイページ</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to posts_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-gift"></i>
+            <span>投稿一覧</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to root_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>仮パス</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>ログアウト</span>
+          <% end %>
+        </li>
+      <% else %>
+      <!-- どちらもログインしていない場合 -->
+        <li class="nav-item">
+          <%= link_to about_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-circle-question"></i>
+            <span>診断する</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to posts_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-gift"></i>
+            <span>投稿一覧</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_user_registration_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-user-plus"></i>
+            <span>新規登録</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_user_session_path, class: "nav-link header-nav-link" do %>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span>ログイン</span>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+<%#    <% if admin_signed_in? %>
+<%#      <div class="header-search-box">
+<%#        <%= form_with url: admin_search_path, method: :get, local: true do |form| %>
+<%#          <div class="d-flex flex-column flex-sm-row-reverse flex-lg-column m-0">
+<%#            <div class="form-group d-flex m-0">
+<%#              <%= form.text_field :search, placeholder: "検索", class: "form-control" %>
+<%#              <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+<%#                <i class="fa-solid fa-magnifying-glass"></i>
+<%#              <% end %>
+<%#            </div>
+<%#            <div class="form-group mt-2 mb-0 ml-auto">
+<%#              <%= form.radio_button :search_model, "user", checked: true %>
+<%#              <%= form.label :search_model_customer, "会員検索", class: "m-0 mr-2" %>
+<%#              <%= form.radio_button :search_model, "post" %>
+<%#              <%= form.label :search_model_item, "投稿検索", class: "m-0 mr-sm-2 m-lg-0" %>
+<%#            </div>
+<%#          </div>
+<%#        <% end %>
+<%#      </div>
+<%#    <% else %>
+<%#      <div class="header-search-box">
+<%#        <%= form_with url: posts_path, method: :get, local: true do |form| %>
+<%#          <div class="form-group d-flex m-0">
+<%#            <%= form.text_field :word_search, placeholder: "投稿名で検索", class: "form-control" %>
+<%#            <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+<%#              <i class="fa-solid fa-magnifying-glass"></i>
+<%#            <% end %>
+<%#          </div>
+<%#        <% end %>
+        <% if user_signed_in? %>
+          <span class="text-signed-in">
+            ようこそ、<%= current_user.name %>さん！
+          </span>
+        <% end %>
+<%#        </div>
+<%#      <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
