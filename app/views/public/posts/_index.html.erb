@@ -1,0 +1,24 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th = style="font-size: 15pt">本のタイトル</th>
+      <th = style="font-size: 15pt">感想</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.each do | post | %>
+      <tr>
+        <td><%= link_to(post.user) do %>
+          <%= image_tag post.user.get_profile_image, size:'50x50' %>
+          <% end %>
+        </td>
+        <td><%= link_to post.title,post_path(post.id) %></td>
+        <td><%= post.body %></td>
+      <%#  <td><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></td>
+      <%#  <td>閲覧数: <%= book.view_counts.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
