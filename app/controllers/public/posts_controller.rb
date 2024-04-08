@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -18,6 +20,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
    if @post.save
     flash[:notice] = "Book was successfully created."
     redirect_to posts_path(@post.id)
@@ -52,6 +55,15 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:user_id, :title, :body, :score)
+  end
+  
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    user = @post.user
+    unless user.id == current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to user_path(current_user)
+    end
   end
 
 end
