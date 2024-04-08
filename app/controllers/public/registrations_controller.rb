@@ -43,7 +43,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-  　 devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:email])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -60,14 +60,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+
   #二重ログイン防止
   def prohibit_multiple_login
     redirect_to admin_root_path
   end
-  
+
   #サインアップ後マイページへ遷移
   def after_sign_up_path_for(resource)
-    customers_my_page_path
+    root_path
   end
 end

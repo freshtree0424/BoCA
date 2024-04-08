@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  before_action :prohibit_multiple_login, if: :customer_signed_in?
+  before_action :prohibit_multiple_login, if: :user_signed_in?
   before_action :authenticate_admin!, except: :root
   # before_action :configure_sign_in_params, only: [:create]
 

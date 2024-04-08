@@ -6,12 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+Admin.create!(
+   email: 'boca@gmail.com',
+   password: '123456',
+   password_confirmation: "123456"
+)
+
 TEST_GMAIL_ACCOUNT_NAME = ENV["TEST_GMAIL_ACCOUNT_NAME"]
 TEST_PASSWORD = ENV["TEST_PASSWORD"]
-
-
-
-
 
 
 #initial_categories = [
@@ -79,3 +82,4 @@ initial_posts = [
   },
 ]
 Post.create(initial_posts)
+
