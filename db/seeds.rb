@@ -68,14 +68,12 @@ end
 initial_posts = [
   {
     user_id: 1,
-    name: "一ノ瀬洋子",
     title: "test1",
     body: "test1",
     score: 4
   },
   {
     user_id: 2,
-    name: "二階堂啓介",
     title: "test2",
     body: "test2",
     score: 3
