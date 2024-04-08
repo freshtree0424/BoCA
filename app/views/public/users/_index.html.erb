@@ -1,0 +1,22 @@
+<table class='table'>
+  <thead>
+    <tr align="center">
+      <th></th>
+      <th = style="font-size: 14pt">名前</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr align="center">
+        <td><%= link_to (user) do %>
+            <%= image_tag user.get_profile_image, size: '70x70' %>
+            <% end %>
+        </td>
+        <td><%= link_to (user) do %>
+            <%= user.name %>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
