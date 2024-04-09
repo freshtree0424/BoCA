@@ -1,8 +1,8 @@
 <div class="container">
   <h4>投稿詳細画面
     <% if @post.user == current_user %>
-      <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success  edit_book_#{@post.id}" %></td>
-      <td><%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}"%></td>
+      <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success  edit_post_#{@post.id}" %></td>
+      <td><%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
     <% end %>
   </h4>
   <div class="row">
@@ -18,17 +18,17 @@
        <td><%= link_to @post.title, @post %></td>
        <td><%= @post.body %></td>
        <td><%= @post.score %></td>
- <%#      <td id="comment_counter">
- <%#        <%= render "book_comments/counter", book: @book %>
- <%#      </td>
- <%#      <td>閲覧数: <%= @book.view_counts.count %></td>
- <%#    </tr>
- <%#   </table>
- <%#
- <%#  <div id="book_comment">
- <%#   <%= render 'book_comments/book_comment', book: @book %>
- <%#  </div>
- <%#   <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
+       <td id="comment_counter">
+         <%= render "public/post_comments/counter", post: @post %>
+       </td>
+       <td>閲覧数: <%= @post_detail.view_counts.count %></td>
+     </tr>
+    </table>
+
+     <div id="post_comment">
+      <%= render 'public/post_comments/post_comment', post: @post %>
+     </div>
+    <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
   </div>
 </div>

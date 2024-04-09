@@ -12,6 +12,12 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
+    @post_comment = PostComment.new
+    @post_detail = Post.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, post_id: @post_detail.id)
+      current_user.view_counts.create(post_id: @post_detail.id)
+    end
   end
 
   def edit
@@ -56,7 +62,7 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:user_id, :title, :body, :score)
   end
-  
+
   def ensure_correct_user
     @post = Post.find(params[:id])
     user = @post.user
