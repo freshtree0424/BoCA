@@ -6,10 +6,11 @@ class User < ApplicationRecord
 
   #アソシエーション
   has_many :posts
-
+  has_many :post_comments, dependent: :destroy
+  has_many :view_counts, dependent: :destroy
 
   #バリテーション
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  #validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 
   has_one_attached :profile_image
