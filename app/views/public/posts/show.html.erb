@@ -1,0 +1,34 @@
+<div class="container">
+  <h4>投稿詳細画面
+    <% if @post.user == current_user %>
+      <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success  edit_post_#{@post.id}" %></td>
+      <td><%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
+    <% end %>
+  </h4>
+  <div class="row">
+    <div class="col">
+          <table class='table'>
+     <tr>
+       <td align="center">
+           <%= link_to(@post.user) do %>
+           <%= image_tag @post.user.get_profile_image, size:"70x70" %><br>
+           <%= @post.user.name%>
+           <% end %>
+       </td>
+       <td><%= link_to @post.title, @post %></td>
+       <td><%= @post.body %></td>
+       <td><%= @post.score %></td>
+       <td id="comment_counter">
+         <%= render "public/post_comments/counter", post: @post %>
+       </td>
+       <td>閲覧数: <%= @post_detail.view_counts.count %></td>
+     </tr>
+    </table>
+
+     <div id="post_comment">
+      <%= render 'public/post_comments/post_comment', post: @post %>
+     </div>
+    <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+    </div>
+  </div>
+</div>
