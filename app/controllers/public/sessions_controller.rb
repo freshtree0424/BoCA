@@ -33,7 +33,7 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
 
   def after_sign_in_path_for(resource)
