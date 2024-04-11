@@ -3,6 +3,7 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_admin!, except: :root
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :prohibit_multiple_login, if: :user_signed_in?
   
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -62,6 +63,11 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  #二重ログイン防止
+  def prohibit_multiple_login
+    redirect_to root_path
+  end
   
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password])
