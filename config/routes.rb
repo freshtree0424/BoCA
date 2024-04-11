@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about"
+    get "/search" => "homes#search"
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
     end
@@ -25,7 +26,8 @@ Rails.application.routes.draw do
   
   # 管理者用
   namespace :admin do
-    root to: "posts#index"
+    root to: "homes#top"
+    get "/search" => "homes#search"
     resources :posts, only: [:index, :show, :update, :destroy]
     resources :users, only: [:index, :show]
     resources :categories, only: [:index, :create, :edit, :update]

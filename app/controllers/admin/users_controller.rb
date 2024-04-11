@@ -1,8 +1,13 @@
 class Admin::UsersController < ApplicationController
   
   def index
-   @users = User.all
-   @post = Post.new
+   if params[:search].present?
+      @users = User.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+      @heading = "「#{params[:search]}」の検索結果"
+    else
+      @users = User.all
+      @heading = "会員一覧"
+    end
   end
   
   def show
