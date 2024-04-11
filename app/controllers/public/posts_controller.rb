@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @post = Post.find(params[:id])
   end
 
@@ -28,32 +29,28 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
    if @post.save
-    flash[:notice] = "Book was successfully created."
     redirect_to posts_path(@post.id)
    else
     @user = current_user
     @posts = Post.all
-    flash[:Alert] = "error"
-    render :index
+    render :new
    end
   end
 
   def update
     @post = Post.find(params[:id])
-    if @post.save
-      flash[:notice] = "Book was successfully updated."
+    if @post.update(post_params)
       redirect_to post_path(@post.id)
     else
-      flash[:alert] = "error"
       render :edit
     end
   end
 
   def destroy
-    flash[:notice] = "Book was successfully destroy."
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path
+    @user = current_user
+    redirect_to user_path(@user)
   end
 
 
@@ -67,7 +64,6 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     user = @post.user
     unless user.id == current_user.id
-      flash[:notice] = "権限がありません"
       redirect_to user_path(current_user)
     end
   end
