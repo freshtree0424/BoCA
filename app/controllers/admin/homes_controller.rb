@@ -1,6 +1,7 @@
-class Admin::HomesController < ApplicationController
+class Admin::HomesController < AdminController
   def top
   end
+  
 
   def search
     case params[:search_model]

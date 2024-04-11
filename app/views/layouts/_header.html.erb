@@ -88,42 +88,48 @@
       <% end %>
       </ul>
     </div>
-<%#    <% if admin_signed_in? %>
-<%#      <div class="header-search-box">
-<%#        <%= form_with url: admin_search_path, method: :get, local: true do |form| %>
-<%#          <div class="d-flex flex-column flex-sm-row-reverse flex-lg-column m-0">
-<%#            <div class="form-group d-flex m-0">
-<%#              <%= form.text_field :search, placeholder: "検索", class: "form-control" %>
-<%#              <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
-<%#                <i class="fa-solid fa-magnifying-glass"></i>
-<%#              <% end %>
-<%#            </div>
-<%#            <div class="form-group mt-2 mb-0 ml-auto">
-<%#              <%= form.radio_button :search_model, "user", checked: true %>
-<%#              <%= form.label :search_model_customer, "会員検索", class: "m-0 mr-2" %>
-<%#              <%= form.radio_button :search_model, "post" %>
-<%#              <%= form.label :search_model_item, "投稿検索", class: "m-0 mr-sm-2 m-lg-0" %>
-<%#            </div>
-<%#          </div>
-<%#        <% end %>
-<%#      </div>
-<%#    <% else %>
-<%#      <div class="header-search-box">
-<%#        <%= form_with url: posts_path, method: :get, local: true do |form| %>
-<%#          <div class="form-group d-flex m-0">
-<%#            <%= form.text_field :word_search, placeholder: "投稿名で検索", class: "form-control" %>
-<%#            <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
-<%#              <i class="fa-solid fa-magnifying-glass"></i>
-<%#            <% end %>
-<%#          </div>
-<%#        <% end %>
+    <% if admin_signed_in? %>
+      <div class="header-search-box">
+        <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+          <div class="d-flex flex-column flex-sm-row-reverse flex-lg-column m-0">
+            <div class="form-group d-flex m-0">
+              <%= f.text_field :search, placeholder: "検索", class: "form-control" %>
+              <%= f.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+                <i class="fa-solid fa-magnifying-glass"></i>
+              <% end %>
+            </div>
+            <div class="form-group mt-2 mb-0 ml-auto">
+              <%= f.radio_button :search_model, "user", checked: true %>
+              <%= f.label :search_model_user, "会員検索", class: "m-0 mr-2" %>
+              <%= f.radio_button :search_model, "post" %>
+              <%= f.label :search_model_post, "投稿検索", class: "m-0 mr-sm-2 m-lg-0" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="header-search-box">
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <div class="form-group d-flex m-0">
+            <%= f.text_field :search, placeholder: "検索", class: "form-control" %>
+            <%= f.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          </div>
+          <div class="form-group mt-2 mb-0 ml-auto">
+              <%= f.radio_button :search_model, "user", checked: true %>
+              <%= f.label :search_model_user, "会員検索", class: "m-0 mr-2" %>
+              <%= f.radio_button :search_model, "post" %>
+              <%= f.label :search_model_post, "投稿検索", class: "m-0 mr-sm-2 m-lg-0" %>
+          </div>
+    <% end %>
         <% if user_signed_in? %>
           <span class="text-signed-in">
             ようこそ、<%= current_user.name %>さん！
           </span>
         <% end %>
-<%#        </div>
-<%#      <% end %>
+        </div>
+      <% end %>
         </ul>
       </div>
     </div>
