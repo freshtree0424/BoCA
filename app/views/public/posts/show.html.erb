@@ -17,7 +17,7 @@
        </td>
        <td><%= link_to @post.title, @post %></td>
        <td><%= @post.body %></td>
-       <td><%= @post.score %></td>
+       <td><%= render "public/posts/static_rate", post: @post %></td>
        <td id="comment_counter">
          <%= render "public/post_comments/counter", post: @post %>
        </td>
