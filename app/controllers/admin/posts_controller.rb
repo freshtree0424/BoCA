@@ -13,12 +13,20 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
+    @post_detail = Post.find(params[:id])
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:user_id, :title, :body, :score)
   end
 
 end

@@ -1,33 +1,32 @@
 <div class="container">
   <h4>投稿詳細画面
-    <% if current_user == admin_sign_in? %>
+    <% if current_user == admin_signed_in? %>
       <td><%= link_to 'Destroy', admin_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}"%></td>
     <% end %>
   </h4>
   <div class="row">
     <div class="col">
-          <table class='table'>
-     <tr>
-       <td align="center">
-           <%= link_to admin_post_path(@post.user.id) do %>
-           <%= image_tag @post.user.get_profile_image, size:"70x70" %><br>
-           <%= @post.user.name%>
-           <% end %>
-       </td>
-       <td><%= link_to @post.title, admin_post_path(@post) %></td>
-       <td><%= @post.body %></td>
-       <td><%= @post.score %></td>
- <%#      <td id="comment_counter">
- <%#        <%= render "book_comments/counter", book: @book %>
- <%#      </td>
- <%#      <td>閲覧数: <%= @book.view_counts.count %></td>
- <%#    </tr>
- <%#   </table>
- <%#
- <%#  <div id="book_comment">
- <%#   <%= render 'book_comments/book_comment', book: @book %>
- <%#  </div>
- <%#   <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
+        <table class='table'>
+          <tr>
+            <td align="center">
+                <%= link_to admin_user_path(@post.user.id) do %>
+                <%= image_tag @post.user.get_profile_image, size:"70x70" %><br>
+                <%= @post.user.name%>
+                <% end %>
+            </td>
+            <td><%= link_to @post.title, admin_post_path(@post) %></td>
+            <td><%= @post.body %></td>
+            <td><%= render "public/posts/static_rate", post: @post %></td>
+            <td id="comment_counter">
+              <%= render "public/post_comments/counter", post: @post %>
+            </td>
+            <td>閲覧数: <%= @post_detail.view_counts.count %></td>
+          </tr>
+        </table>
+      <div id="post_comment">
+       <%= render 'public/post_comments/post_comment', post: @post %>
+      </div>
+      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
   </div>
 </div>
