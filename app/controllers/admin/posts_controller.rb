@@ -13,6 +13,8 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
+    @post_detail = Post.find(params[:id])
   end
 
   def update
@@ -20,7 +22,7 @@ class Admin::PostsController < ApplicationController
 
   def destroy
   end
-  
+
   private
 
   def post_params
