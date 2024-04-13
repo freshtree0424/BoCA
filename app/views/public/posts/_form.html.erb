@@ -8,6 +8,12 @@
     <%= f.label :opinion, "感想" %>
     <%= f.text_area :body, class: 'form-control post_body' %>
   </div>
+  <%# タグ機能 %>
+  <div class='form-group'>
+    <%= f.label :name, "タグ付け" %>
+    <%= f.text_field :name,value: @tags, placeholder: "タグが複数の場合は','で区切ってください", class: 'form-control post_tag' %>
+  </div>
+  <%# raty機能 %>
   <% if post.id.nil? %><%#新規投稿(new)の場合%>
     <div class="form-group" id="score">
       <%= f.label :score, "評価"%>
