@@ -9,12 +9,19 @@ class Admin::PostsController < ApplicationController
       @posts = Post.all.order(created_at: :asc)
       @heading = "投稿一覧"
     end
+    @tag_lists = {}
+      @posts.each do |post|
+      # 各投稿ごとにタグを取得し、ハッシュに格納する
+      @tag_lists[post.id] = post.tags.pluck(:name).join(',')
+      end
   end
 
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_detail = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(',')
+    @tags = @post.tags
   end
 
   def update
@@ -22,11 +29,28 @@ class Admin::PostsController < ApplicationController
 
   def destroy
   end
+  
+  def search_tag
+    if params[:tag_name].present?
+      @tag = Tag.find_by(name: params[:tag_name])
+      @posts = @tag.posts
+    else
+      @tag_list = Tag.all
+    end
+    @tag_lists = {}
+    @posts.each do |post|
+      @tag_lists[post.id] = post.tags.pluck(:name).join(',')
+    end
+  end
 
   private
 
   def post_params
     params.require(:post).permit(:user_id, :title, :body, :score)
+  end
+  
+  def tag_params
+    params.require(:tag).permit(:name)
   end
 
 end

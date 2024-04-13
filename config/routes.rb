@@ -24,11 +24,12 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:show, :edit, :index, :update, :destroy]
   end
-  
+
   # 管理者用
   namespace :admin do
     root to: "homes#top"
     get "/search" => "homes#search"
+    get "/search_tag" => "posts#search_tag"
     resources :posts, only: [:index, :show, :update, :destroy]
     resources :users, only: [:index, :show]
     resources :categories, only: [:index, :create, :edit, :update]
