@@ -15,9 +15,9 @@
         <td><%= link_to post.title, post_path(post.id) %></td>
         <td><%= post.body %></td>
         <td><% @tag_lists[post.id].split(',').each do |tag_name| %>
-                  <i class="fa-solid fa-tag"></i>
-                   <%= link_to tag_name, search_tag_path(tag_name: tag_name) %>
-                  <% end %></td>
+              <i class="fa-solid fa-tag"></i><%= link_to tag_name, search_tag_path(tag_name: tag_name) %>
+            <% end %>
+        </td>
         <td><%= render "public/posts/static_rate", post: post %></td>
         <td><%= "#{post.post_comments.count} コメント" %></td>
         <td>閲覧数: <%= post.view_counts.count %></td>

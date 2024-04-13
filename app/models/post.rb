@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   validates :body, presence: true, length: { maximum: 200 }
   validates :score, presence: true
 
-   # タグ付けの新規投稿用メソッド
+  #タグ付けの新規投稿用メソッド
   def save_tags(tags)
     tags.each do |new_tag|
       tag = Tag.find_or_create_by(name: new_tag)
@@ -20,7 +20,7 @@ class Post < ApplicationRecord
     end
   end
 
-  # タグ付けの更新用メソッド
+  #タグ付けの更新用メソッド
   def update_tags(latest_tags)
     if self.tags.empty?
       latest_tags.each do |latest_tag|
