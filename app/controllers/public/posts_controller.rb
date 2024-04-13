@@ -80,7 +80,7 @@ class Public::PostsController < ApplicationController
     end
     @tag_lists = {}
     @posts.each do |post|
-    @tag_lists[post.id] = post.tags.pluck(:name).join(',')
+      @tag_lists[post.id] = post.tags.pluck(:name).join(',')
     end
   end
 
