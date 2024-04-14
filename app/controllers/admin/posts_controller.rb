@@ -29,7 +29,7 @@ class Admin::PostsController < AdminController
     post.destroy
     redirect_to admin_posts_path
   end
-  
+
   def search_tag
     if params[:tag_name].present?
       @tag = Tag.find_by(name: params[:tag_name])
@@ -48,7 +48,7 @@ class Admin::PostsController < AdminController
   def post_params
     params.require(:post).permit(:user_id, :title, :body, :score)
   end
-  
+
   def tag_params
     params.require(:tag).permit(:name)
   end

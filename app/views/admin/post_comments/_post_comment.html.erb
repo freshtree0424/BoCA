@@ -2,12 +2,11 @@
  <tbody>
  <% post.post_comments.each do |post_comment| %>
    <tr>
-     <td><%= image_tag post_comment.user.get_profile_image, size:"70x70" %>
-         <%= post_comment.user.name %>
+     <td><%= image_tag post_comment.user.get_profile_image, size:"50x50" %>
      </td>
      <td><%= post_comment.comment %></td>
      <% if admin_signed_in? %>
-     <td><%= link_to "Destroy", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger", remote: true %></td>
+     <td><%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger", remote: true %></td>
      <% end %>
    </tr>
  <% end %>

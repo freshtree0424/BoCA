@@ -14,6 +14,10 @@ class Admin::UsersController < AdminController
     @user = User.find(params[:id])
     @posts = @user.posts
     @post = Post.new
+    @tag_lists = {}
+    @posts.each do |post|
+      @tag_lists[post.id] = post.tags.pluck(:name).join(',')
+    end
   end
 
 end
