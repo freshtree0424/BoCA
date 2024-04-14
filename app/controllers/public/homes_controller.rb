@@ -1,7 +1,7 @@
 class Public::HomesController < PublicController
 
   def top
-   @posts = Post.all
+   @posts = Post.order(created_at: :desc)
    @tag_lists = {}
     @posts.each do |post|
       @tag_lists[post.id] = post.tags.pluck(:name).join(',')

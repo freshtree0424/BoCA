@@ -42,6 +42,10 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
+     <% if post.persisted? %>
+       <%= f.submit "更新する", class: "btn btn-success" %>
+     <% else %>
+       <%= f.submit "投稿する", class: "btn btn-success" %>
+     <% end %>
   </div>
 <% end %>

@@ -2,7 +2,6 @@
 <div class="container">
   <div class="row">
     <div class="col">
-
       <h4>本サイトは、あなたの性格を分析し、<br>
           解説したのちに投稿していただくレビューサイトです</h4>
         <%= link_to "性格分析をやってみる", root_path, class: "btn btn-success btn-lg btn-block" %>
@@ -35,7 +34,11 @@
 
         <%= link_to "性格分析をやってみる", root_path, class: "btn btn-success btn-lg btn-block" %>
       <p>性格分析にはログインが必要です。新規登録はこちらから</p>
-
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>管理者ログインは<%= link_to "こちら", admin_session_path %>から</p>
     </div>
   </div>
 </div>

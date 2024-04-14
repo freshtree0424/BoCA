@@ -1,9 +1,9 @@
-class Public::UsersController < ApplicationController
+class Public::UsersController < PublicController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-   if params[:search].present?
+    if params[:search].present?
       @users = User.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
       @heading = "「#{params[:search]}」の検索結果"
     else

@@ -1,2 +1,8 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>新規投稿一覧</h4>
+        <%= render 'admin/posts/index',posts: @posts, tag_lists: @tag_lists %>
+    </div>
+  </div>
+</div>

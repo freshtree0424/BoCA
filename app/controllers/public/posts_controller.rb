@@ -1,4 +1,4 @@
-class Public::PostsController < ApplicationController
+class Public::PostsController < PublicController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
