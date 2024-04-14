@@ -1,4 +1,4 @@
-class Admin::PostsController < ApplicationController
+class Admin::PostsController < AdminController
   before_action :authenticate_admin!
 
   def index
@@ -24,10 +24,10 @@ class Admin::PostsController < ApplicationController
     @tags = @post.tags
   end
 
-  def update
-  end
-
   def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to admin_posts_path
   end
   
   def search_tag
