@@ -17,7 +17,12 @@ class Admin::PostsController < AdminController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if @post.nil?
+      redirect_to admin_root_path
+      return
+    end
     @post_comment = PostComment.new
     @post_detail = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join(',')
@@ -25,7 +30,12 @@ class Admin::PostsController < AdminController
   end
 
   def destroy
-    post = Post.find(params[:id])
+    post = Post.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if post.nil?
+      redirect_to admin_root_path
+      return
+    end
     post.destroy
     redirect_to admin_posts_path
   end
@@ -33,6 +43,11 @@ class Admin::PostsController < AdminController
   def search_tag
     if params[:tag_name].present?
       @tag = Tag.find_by(name: params[:tag_name])
+      #存在しないタグを検索したらトップへ遷移
+      if @tag.nil?
+        redirect_to admin_root_path
+        return
+      end
       @posts = @tag.posts
     else
       @tag_list = Tag.all

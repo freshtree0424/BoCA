@@ -22,7 +22,12 @@ class Public::PostsController < PublicController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if @post.nil?
+      redirect_to root_path
+      return
+    end
     @user = @post.user
     @tag_list = @post.tags.pluck(:name).join(',')
     @post_comment = PostComment.new
@@ -35,7 +40,12 @@ class Public::PostsController < PublicController
 
   def edit
     @user = current_user
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if @post.nil?
+      redirect_to root_path
+      return
+    end
     @tags = @post.tags.pluck(:name).join(',')
   end
 
@@ -54,7 +64,12 @@ class Public::PostsController < PublicController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if @post.nil?
+      redirect_to root_path
+      return
+    end
     tags = params[:post][:name].split(',')
     if @post.update(post_params)
       @post.update_tags(tags)
@@ -65,7 +80,12 @@ class Public::PostsController < PublicController
   end
 
   def destroy
-    post = Post.find(params[:id])
+    post = Post.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if post.nil?
+      redirect_to root_path
+      return
+    end
     post.destroy
     @user = current_user
     redirect_to user_path(@user)
@@ -74,6 +94,11 @@ class Public::PostsController < PublicController
   def search_tag
     if params[:tag_name].present?
       @tag = Tag.find_by(name: params[:tag_name])
+      #存在しないタグを検索したらトップへ遷移
+      if @tag.nil?
+        redirect_to root_path
+        return
+      end
       @posts = @tag.posts
     else
       @tag_list = Tag.all

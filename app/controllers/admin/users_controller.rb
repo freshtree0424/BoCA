@@ -11,7 +11,12 @@ class Admin::UsersController < AdminController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if @user.nil?
+      redirect_to admin_root_path
+      return
+    end
     @posts = @user.posts
     @post = Post.new
     @tag_lists = {}
