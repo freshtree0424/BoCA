@@ -17,7 +17,7 @@ skip_before_action :authenticate_user!, only: [:guest_sign_in]
     user = User.guest
     sign_in user
     flash[:notice] = "ゲストユーザーとしてログインしました。"
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 
   def search

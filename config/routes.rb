@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
-    resources :posts, only: [:index, :show, :update, :destroy]
+    resources :posts, only: [:index, :show, :update, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     resources :users, only: [:index, :show]
     resources :categories, only: [:index, :create, :edit, :update]
   end
