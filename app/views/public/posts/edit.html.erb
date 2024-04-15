@@ -1,6 +1,6 @@
 <div class="container">
   <h4>投稿編集画面
-      <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
+      <%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
   </h4>
   <div class="row">
     <div class="col">
