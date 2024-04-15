@@ -1,18 +1,51 @@
 <%= form_with(model: @post, local: true) do |f| %>
 <%= render "public/shared/error_messages", resource: @post %>
   <div class="form-group">
-    <%= f.label :title %>
+    <%= f.label :title, "タイトル" %>
     <%= f.text_field :title, class: 'form-control post_title' %>
   </div>
   <div class="form-group">
-    <%= f.label :opinion %>
+    <%= f.label :opinion, "感想" %>
     <%= f.text_area :body, class: 'form-control post_body' %>
   </div>
-  <div class="form-group">
-    <%= f.label :score, "評価" %>
-    <%= f.select :score, options_for_select([1, 2, 3, 4, 5]) %>
+  <%# タグ機能 %>
+  <div class='form-group'>
+    <%= f.label :name, "タグ付け" %>
+    <%= f.text_field :name,value: @tags, placeholder: "タグが複数の場合は','で区切ってください", class: 'form-control post_tag' %>
   </div>
+  <%# raty機能 %>
+  <% if post.id.nil? %><%#新規投稿(new)の場合%>
+    <div class="form-group" id="score">
+      <%= f.label :score, "評価"%>
+      <%= f.hidden_field :score, id: :review_score, class: 'form-control' %>
+      <div id="post_raty"></div>
+    </div>
+    <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+
+        elem.innerHTML = ""
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'post[score]',
+        };
+        raty(elem, opt);
+      });
+    </script>
+  <% else %><%#既存投稿(edit)の場合%>
+    <div class="form-group">
+      <%= render "public/posts/static_rate", post: post %>
+    </div>
+  <% end %>
+
   <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
+     <% if post.persisted? %>
+       <%= f.submit "更新する", class: "btn btn-success" %>
+     <% else %>
+       <%= f.submit "投稿する", class: "btn btn-success" %>
+     <% end %>
   </div>
 <% end %>

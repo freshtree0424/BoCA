@@ -1,32 +1,52 @@
-class Public::UsersController < ApplicationController
+class Public::UsersController < PublicController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-   @users = User.all
-   @post = Post.new
+    if params[:search].present?
+      @users = User.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+      @heading = "「#{params[:search]}」の検索結果"
+    else
+      @users = User.all
+      @heading = "会員一覧"
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if @user.nil?
+      redirect_to root_path
+      return
+    end
     @posts = @user.posts
     @post = Post.new
+    @tag_lists = {}
+    @posts.each do |post|
+      @tag_lists[post.id] = post.tags.pluck(:name).join(',')
+    end
+    # byebug
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect_to root_path
+      return
+    end
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect_to root_path
+      return
+    end
     if @user.update(user_params)
       redirect_to user_path
     else
       render :edit
     end
-  end
-
-  def destroy
   end
 
   private
