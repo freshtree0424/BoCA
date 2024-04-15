@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
+    post "/guest_sign_in", to: "homes#guest_sign_in", as: :guest_sign_in
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
     end

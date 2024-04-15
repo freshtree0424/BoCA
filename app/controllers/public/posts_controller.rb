@@ -7,8 +7,12 @@ class Public::PostsController < PublicController
   end
 
   def index
+    #post,tag検索で一意の投稿のみ検索
     if params[:search].present?
-      @posts = Post.where("title LIKE ?", "%#{params[:search]}%") if params[:search].present?
+      posts_by_title = Post.where("title LIKE ?", "%#{params[:search]}%")
+      posts_by_tag = Post.joins(:tags).where("tags.name LIKE ?", "%#{params[:search]}%")
+      # タイトル検索とタグ検索の結果を結合して一意の投稿を取得
+      @posts = (posts_by_title + posts_by_tag).uniq
       @heading = "「#{params[:search]}」の検索結果"
     else
       @posts = Post.all.order(created_at: :asc)
