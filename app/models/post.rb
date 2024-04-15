@@ -44,4 +44,8 @@ class Post < ApplicationRecord
     end
   end
 
+  def self.search_by_title_or_tag(query)
+    joins(:tags).where("posts.title LIKE :query OR tags.name LIKE :query", query: "%#{query}%")
+  end
+
 end
