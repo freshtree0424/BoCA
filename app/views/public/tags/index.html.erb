@@ -1,0 +1,8 @@
+<div class="container">
+  <h4><%= @heading %></h4>
+  <div class="row">
+    <div class="col">
+      <%= render 'public/posts/index',posts: @posts, tag_lists: @tag_lists %>
+    </div>
+  </div>
+</div>
