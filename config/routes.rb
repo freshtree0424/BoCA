@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :index, :update, :destroy]
+    resources :tags, only:[:index]
   end
 
   # 管理者用
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:index, :show]
     resources :categories, only: [:index, :create, :edit, :update]
+    resources :tags, only:[:index]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

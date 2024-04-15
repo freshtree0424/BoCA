@@ -27,7 +27,7 @@ skip_before_action :authenticate_user!, only: [:guest_sign_in]
     when "post" then
       redirect_to posts_path(search: params[:search])
     when "tag" then
-      redirect_to posts_path(search: params[:search])
+      redirect_to tags_path(search: params[:search])
     end
   end
 

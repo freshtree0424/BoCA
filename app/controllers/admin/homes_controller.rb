@@ -14,6 +14,8 @@ class Admin::HomesController < AdminController
       redirect_to admin_users_path(search: params[:search])
     when "post" then
       redirect_to admin_posts_path(search: params[:search])
+    when "tag" then
+      redirect_to admin_tags_path(search: params[:search])
     end
   end
 end
