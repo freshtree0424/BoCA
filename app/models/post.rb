@@ -43,7 +43,9 @@ class Post < ApplicationRecord
       end
     end
   end
-
+  
+  #post,tagの検索メソッド
+  #"joins(:tags)"でpostとtagテーブルの結合,whereでpost.titleとtag.nameを対象に,queryが検索
   def self.search_by_title_or_tag(query)
     joins(:tags).where("posts.title LIKE :query OR tags.name LIKE :query", query: "%#{query}%")
   end
