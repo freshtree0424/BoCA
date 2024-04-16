@@ -51,6 +51,13 @@ initial_posts = [
     score: 5,
     created_at: "2024/04/15 15:43:52"
   },
+  {
+    user_id: 3,
+    title: "夏祭りの始まり",
+    body: "BoCA大賞ノミネート作品！感動作で泣けました！",
+    score: 5,
+    created_at: "2024/04/16 17:42:09"
+  },
 ]
 Post.create(initial_posts)
 
@@ -67,6 +74,12 @@ initial_tags = [
   },
   {
     name: "ファンタジー",
+  },
+  {
+    name: "感動",
+  },
+  {
+    name: "ノミネート",
   },
 ]
 Tag.create(initial_tags)
@@ -90,39 +103,47 @@ initial_tag_relationships = [
     tag_id: 4,
     post_id: 2,
   },
+  {
+    tag_id: 5,
+    post_id: 3,
+  },
+  {
+    tag_id: 6,
+    post_id: 3,
+  },
 ]
 TagRelationship.create(initial_tag_relationships)
 
 
 #カテゴリー
-#initial_categories = [
-#  {name: "Em1"},
-#  {name: "Em2"},
-#  {name: "Em3"},
-#  {name: "Em4"},
-#  {name: "Em5"},
-#  {name: "Ex1"},
-#  {name: "Ex2"},
-#  {name: "Ex3"},
-#  {name: "Ex4"},
-#  {name: "Ex5"},
-#  {name: "C1"},
-#  {name: "C2"},
-#  {name: "C3"},
-#  {name: "C4"},
-#  {name: "C5"},
-#  {name: "A1"},
-#  {name: "A2"},
-#  {name: "A3"},
-#  {name: "A4"},
-#  {name: "A5"},
-#  {name: "P1"},
-#  {name: "P2"},
-#  {name: "P3"},
-#  {name: "P4"},
-#  {name: "P5"},
-#]
-#Category.create(initial_categories)
+initial_categories = [
+  {name: "Emotionality"},
+  {name: "Emotionality2"},
+  {name: "Emotionality3"},
+  {name: "Emotionality4"},
+  {name: "Emotionality5"},
+  {name: "Extraversion1"},
+  {name: "Extraversion2"},
+  {name: "Extraversion3"},
+  {name: "Extraversion4"},
+  {name: "Extraversion5"},
+  {name: "Controllability1"},
+  {name: "Controllability2"},
+  {name: "Controllability3"},
+  {name: "Controllability4"},
+  {name: "Controllability5"},
+  {name: "Attachment1"},
+  {name: "Attachment2"},
+  {name: "Attachment3"},
+  {name: "Attachment4"},
+  {name: "Attachment5"},
+  {name: "Playability1"},
+  {name: "Playability2"},
+  {name: "Playability3"},
+  {name: "Playability4"},
+  {name: "Playability5"},
+]
+Category.create(initial_categories)
 
 #Emテーブル
 #initial_emotionalities = [

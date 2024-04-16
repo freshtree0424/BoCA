@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
+    get "/analysis" => "analysis#top"
+    get "/analysis/:id" => "analysis#show"
     post "/guest_sign_in", to: "homes#guest_sign_in", as: :guest_sign_in
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
+    get "/analysis" => "analysis#index"
     resources :posts, only: [:index, :show, :update, :destroy] do
       resources :post_comments, only: [:destroy]
     end
