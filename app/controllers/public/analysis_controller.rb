@@ -4,4 +4,8 @@ class Public::AnalysisController < ApplicationController
 
   def show
   end
+  
+  private
+
+
 end

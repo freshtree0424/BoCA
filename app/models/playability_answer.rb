@@ -1,6 +1,7 @@
-class EmotionalityAnswer < ApplicationRecord
+class PlayabilityAnswer < ApplicationRecord
   belongs_to :user
-  belongs_to :emotionality
+  belongs_to :playability
+
   # レコードごとに回答された値を合計して返すメソッド
   def self.total_score
     sum(:answer)

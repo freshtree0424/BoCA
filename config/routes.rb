@@ -27,7 +27,13 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:show, :edit, :index, :update, :destroy]
     resources :tags, only:[:index]
-    resources :emotionalities, only:[:new, :create,:update]
+    resources :emotionalities, only:[:new, :create,:update] do
+      resources :emotionality_answers, only:[:create]
+    end
+    resources :extraversions, only:[:new, :create,:update]
+    resources :controllabilities, only:[:new, :create,:update]
+    resources :attachments, only:[:new, :create,:update]
+    resources :playabilities, only:[:new, :create,:update]
   end
 
   # 管理者用

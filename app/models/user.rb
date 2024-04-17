@@ -8,7 +8,18 @@ class User < ApplicationRecord
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :view_counts, dependent: :destroy
+  #性格分析アソシエーション
   has_many :emotionality_answers, dependent: :destroy
+  has_many :emotionalities, through: :emotionality_answers, dependent: :destroy
+  has_many :extraversion_answers, dependent: :destroy
+  has_many :extraversions, through: :extraversion_answers, dependent: :destroy
+  has_many :controllability_answers, dependent: :destroy
+  has_many :controllabilities, through: :controllability_answers, dependent: :destroy
+  has_many :attachment_answers, dependent: :destroy
+  has_many :attachments, through: :attachment_answers, dependent: :destroy
+  has_many :playability_answers, dependent: :destroy
+  has_many :playabilities, through: :playability_answers, dependent: :destroy
+
 
   #バリテーション
   validates :name, presence: true, uniqueness: true, unless: :new_record?

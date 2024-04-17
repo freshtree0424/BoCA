@@ -29,7 +29,7 @@
     <h2>素直な気持ちでお答えください</h2>
   </div>
   <div class="row">
-  <%= form_with model: @emotionality, local:true do |f| %>
+  <%= form_with model: @controllability, local:true do |f| %>
     <table>
       <thead>
         <tr>
@@ -42,15 +42,15 @@
         </tr>
       </thead>
       <tobody>
-        <% @emotionalities.each do |emotionality| %>
-        <%= form_with model: emotionality, url: emotionality_emotionality_answers_path(emotionality), html: { method: :post } do |f2| %>
+        <% @controllabilities.each do |controllability| %>
+        <%= form_with model: controllability, url: { action: "create" }, html: { method: :post } do |f2| %>
         <tr>
-          <td><%= emotionality.question %></td>
-          <td><%= f2.radio_button :answer, 1, name: "emotionality[answer]" %></td>
-          <td><%= f2.radio_button :answer, 2, name: "emotionality[answer]" %></td>
-          <td><%= f2.radio_button :answer, 3, name: "emotionality[answer]" %></td>
-          <td><%= f2.radio_button :answer, 4, name: "emotionality[answer]" %></td>
-          <td><%= f2.radio_button :answer, 5, name: "emotionality[answer]" %></td>
+          <td><%= controllability.question %></td>
+          <td><%= f2.radio_button :answer, 1 %></td>
+          <td><%= f2.radio_button :answer, 2 %></td>
+          <td><%= f2.radio_button :answer, 3 %></td>
+          <td><%= f2.radio_button :answer, 4 %></td>
+          <td><%= f2.radio_button :answer, 5 %></td>
         </tr>
         <% end %>
         <% end %>
