@@ -1,0 +1,64 @@
+<style>
+  table {
+    table-layout: fixed;
+    width: 100%; /* テーブルの幅を100%に設定 */
+  }
+  th {
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+  }
+  th:first-child {
+    width: 40%; /* 質問項目の幅を40%に設定 */
+  }
+  th:not(:first-child) {
+    width: calc(60% / 5); /* 残りの5項目を等分して設定 */
+  }
+  td {
+    padding: 20px;
+    text-align: center;
+  }
+  td input[type="radio"] {
+    width: 40px;
+    height: 40px;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <h2>素直な気持ちでお答えください</h2>
+  </div>
+  <div class="row">
+  <%= form_with model: @emotionality, local:true do |f| %>
+    <table>
+      <thead>
+        <tr>
+          <th>質問項目</th>
+          <th>全く違う</th>
+          <th>違う</th>
+          <th>どちらでもない</th>
+          <th>そうだ</th>
+          <th>全くそうだ</th>
+        </tr>
+      </thead>
+      <tobody>
+        <% @emotionalities.each do |emotionality| %>
+        <%= form_with model: emotionality, url: { action: "create" }, html: { method: :post } do |f2| %>
+        <tr>
+          <td><%= emotionality.question %></td>
+          <td><%= f2.radio_button :answer, 1 %></td>
+          <td><%= f2.radio_button :answer, 2 %></td>
+          <td><%= f2.radio_button :answer, 3 %></td>
+          <td><%= f2.radio_button :answer, 4 %></td>
+          <td><%= f2.radio_button :answer, 5 %></td>
+        </tr>
+        <% end %>
+        <% end %>
+        </tobody>
+    </table>
+      <div align="center">
+        <%= f.submit "次へ", class: "btn btn-success" %>
+      </div>
+  <% end %>
+  </div>
+</div>

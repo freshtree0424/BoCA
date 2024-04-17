@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :view_counts, dependent: :destroy
+  has_many :emotionality_answers, dependent: :destroy
 
   #バリテーション
   validates :name, presence: true, uniqueness: true, unless: :new_record?

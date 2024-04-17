@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:show, :edit, :index, :update, :destroy]
     resources :tags, only:[:index]
+    resources :emotionalities, only:[:new, :create,:update]
   end
 
   # 管理者用

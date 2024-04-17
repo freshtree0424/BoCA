@@ -117,7 +117,7 @@ TagRelationship.create(initial_tag_relationships)
 
 #カテゴリー
 initial_categories = [
-  {name: "Emotionality"},
+  {name: "Emotionality1"},
   {name: "Emotionality2"},
   {name: "Emotionality3"},
   {name: "Emotionality4"},
@@ -146,49 +146,49 @@ initial_categories = [
 Category.create(initial_categories)
 
 #Emテーブル
-#initial_emotionalities = [
-#  {
-#    category_id: 1,
-#    question: "小さなことにはくよくよしない"
-#  },
-#  {
-#    category_id: 1,
-#    question: "ものごとがうまく行かないのではないかと，よく心配する"
-#  },
-#  {
-#    category_id: 2,
-#    question: "緊張してふるえるようなことはない"
-#  },
-#  {
-#    category_id: 2,
-#    question: "よく緊張する"
-#  },
-#  {
-#    category_id: 3,
-#    question: "見捨てられた感じがする"
-#  },
-#  {
-#    category_id: 3,
-#    question: "憂鬱になりやすい"
-#  },
-#  {
-#    category_id: 4,
-#    question: "自分がみじめな人間に思える"
-#  },
-#  {
-#    category_id: 4,
-#    question: "自分には全然価値がないように思えることがある"
-#  },
-#  {
-#    category_id: 5,
-#    question: "陽気になったり陰気になったり，気分が変りやすい"
-#  },
-#  {
-#    category_id: 5,
-#    question: "明るいときと暗いときの気分の差が大きい"
-#  },
-#]
-#Emotionality.create(initial_emotionalities)
+initial_emotionalities = [
+  {
+    category_id: 1,
+    question: "小さなことにはくよくよしない"
+  },
+  {
+    category_id: 1,
+    question: "ものごとがうまく行かないのではないかと，よく心配する"
+  },
+  {
+    category_id: 2,
+    question: "緊張してふるえるようなことはない"
+  },
+  {
+    category_id: 2,
+    question: "よく緊張する"
+  },
+  {
+    category_id: 3,
+    question: "見捨てられた感じがする"
+  },
+  {
+    category_id: 3,
+    question: "憂鬱になりやすい"
+  },
+  {
+    category_id: 4,
+    question: "自分がみじめな人間に思える"
+  },
+  {
+    category_id: 4,
+    question: "自分には全然価値がないように思えることがある"
+  },
+  {
+    category_id: 5,
+    question: "陽気になったり陰気になったり，気分が変りやすい"
+  },
+  {
+    category_id: 5,
+    question: "明るいときと暗いときの気分の差が大きい"
+  },
+]
+Emotionality.create(initial_emotionalities)
 
 #Exテーブル
 #initial_extraversions = [
@@ -371,59 +371,59 @@ Category.create(initial_categories)
 #Playability.create(initial_playabilities)
 
 #Em_answerテーブル
-#initial_emotionality_answers = [
-#  {
-#    user_id: 1,
-#    emotionality_id: 1,
-#    answer: 4
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 2,
-#    answer: 2
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 3,
-#    answer: 3
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 4,
-#    answer: 1
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 5,
-#    answer: 1
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 6,
-#    answer: 1
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 7,
-#    answer: 1
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 8,
-#    answer: 1
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 9,
-#    answer: 1
-#  },
-#  {
-#    user_id: 1,
-#    emotionality_id: 10,
-#    answer: 4
-#  },
-#]
-#Emotionality_answer.create(initial_emotionality_answers)
+initial_emotionality_answers = [
+  {
+    user_id: 1,
+    emotionality_id: 1,
+    answer: 4
+  },
+  {
+    user_id: 1,
+    emotionality_id: 2,
+    answer: 2
+  },
+  {
+    user_id: 1,
+    emotionality_id: 3,
+    answer: 3
+  },
+  {
+    user_id: 1,
+    emotionality_id: 4,
+    answer: 1
+  },
+  {
+    user_id: 1,
+    emotionality_id: 5,
+    answer: 1
+  },
+  {
+    user_id: 1,
+    emotionality_id: 6,
+    answer: 1
+  },
+  {
+    user_id: 1,
+    emotionality_id: 7,
+    answer: 1
+  },
+  {
+    user_id: 1,
+    emotionality_id: 8,
+    answer: 1
+  },
+  {
+    user_id: 1,
+    emotionality_id: 9,
+    answer: 1
+  },
+  {
+    user_id: 1,
+    emotionality_id: 10,
+    answer: 4
+  },
+]
+EmotionalityAnswer.create(initial_emotionality_answers)
 
 #Ex_answerテーブル
 #initial_extraversion_answers = [
