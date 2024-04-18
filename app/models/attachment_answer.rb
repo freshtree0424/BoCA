@@ -7,9 +7,9 @@ class AttachmentAnswer < ApplicationRecord
     score = where(user: user).sum(:answer)
     grade =
       case score
-      when 0..30
+      when 0..28
         '調和性は低め。他人への親切心があまりない。交渉が得意なケースもある。'
-      when 31..39
+      when 29..35
         '調和性は平均程度。親切なこともあれば好き嫌いが激しい事もある。'
       else
         '調和性は高め。他人に親切。'

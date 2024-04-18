@@ -23,6 +23,9 @@
     </div>
     <div class="row">
       <%= render 'public/posts/index',posts: @posts, tag_lists: @tag_lists %>
-
+    </div>
+    <div class="row">
+      <h3>性格分析詳細</h3>
+      <h4><%= link_to '詳細はこちら', analysis_path(@user.id), class: "btn btn-sm btn-info" %></h4>
     </div>
 </div>

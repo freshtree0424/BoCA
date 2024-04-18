@@ -20,8 +20,9 @@ Rails.application.routes.draw do
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
     get "/analysis/top" => "analyses#top"
-    get "/analyses/:id", to: "analyses#show", as: "analysis"
-    post "/guest_sign_in", to: "homes#guest_sign_in", as: :guest_sign_in
+    get "/analyses/:id" => "analyses#show", as: "analysis"
+    get "/analyses/detail/:id" => "analyses#detail", as: "analysis_detail"
+    post "/guest_sign_in" => "homes#guest_sign_in", as: :guest_sign_in
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
     end

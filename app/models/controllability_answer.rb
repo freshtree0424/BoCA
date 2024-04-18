@@ -7,9 +7,9 @@ class ControllabilityAnswer < ApplicationRecord
     score = where(user: user).sum(:answer)
     grade =
       case score
-      when 0..30
+      when 0..25
         '誠実性は低め。衝動的に行動する予定を先延ばしにする。'
-      when 31..39
+      when 26..32
         '誠実性は平均程度。コツコツ続けられることもあれば衝動的になることもある。'
       else
         '誠実性は高め。つらい仕事でも淡々と行える性格です。'

@@ -7,9 +7,9 @@ class EmotionalityAnswer < ApplicationRecord
     score = where(user: user).sum(:answer)
     grade =
       case score
-      when 0..30
+      when 0..31
         '神経症傾向は低め。多少の事ではメンタルが崩れません。'
-      when 31..39
+      when 32..38
         '神経症傾向は平均程度。メンタルは普通で崩れることもあれば崩れないこともあります。'
       else
         '神経症傾向は高め。メンタルが敏感で多少のことで焦ったりします。感受性が高い場合も神経症傾向は高くなる傾向があります。'
