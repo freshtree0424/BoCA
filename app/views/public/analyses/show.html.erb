@@ -1,7 +1,7 @@
 <h2><%= @user.name %>さんの性格分析</h2>
 
-<p><%= @user.emotionality_answers.total_score %></p>
-<p><%= @user.extraversion_answers.total_score %></p>
-<p><%= @user.controllability_answers.total_score %></p>
-<p><%= @user.attachment_answers.total_score %></p>
-<p><%= @user.playability_answers.total_score %></p>
+<p><%= @user.emotionality_answers.total_score_for_user(@user) %></p>
+<p><%= @user.extraversion_answers.total_score_for_user(@user)%></p>
+<p><%= @user.controllability_answers.total_score_for_user(@user) %></p>
+<p><%= @user.attachment_answers.total_score_for_user(@user) %></p>
+<p><%= @user.playability_answers.total_score_for_user(@user) %></p>

@@ -16,22 +16,21 @@ class Public::ControllabilitiesController < ApplicationController
     @answers = []
     #eachでcontrollability_answerのk(key)とv(value)をcontrollability_answer_id毎に処理
     params[:controllability_answer].each do |k, v|
-      #@controllability = ControllabilityAnswer.newにエラーがあればelseへ飛ぶ
-      #elseへ飛ぶバリデーションはif v.to_i == 0 で'v'が0→未回答の時
+      #if v.to_i == 0 で'v'が0→未回答の時エラー追加
       @controllability.errors.add(:base, '') if v.to_i == 0
-      #k=(:controllability_id),v=(:answer)に指定して@answerに追加
-      @answers << {
-        answer: v.to_i,
-        controllability_id: k.to_i,
-        user_id: current_user.id,
-        created_at: Time.current,
-        updated_at: Time.current
-      }
+     #find_or_initialize_byでcontrollabilityidとuser_idでControllabilityAnswerのレコードを検索(find)
+      #存在しない(新規)は新規作成、存在する場合は既存のデータを呼び出し
+      answer = ControllabilityAnswer.find_or_initialize_by(controllability_id: k.to_i, user_id: current_user.id)
+      # answerの属性を入力した内容に更新する
+      answer.update(answer: v.to_i)
+      #answerの情報を@answerに格納
+      @answers << answer
     end
-    #@controllabilityでエラーが無い(false)時unless以下へ、エラーがある(true)の時elseへ
+    #エラーが無い(false)時unless以下へ、エラーがある(true)時elseへ
     unless @controllability.errors.any?
-      #@answerをControllabilityAnswerへ一括保存(insert_all)
-      ControllabilityAnswer.insert_all @answers
+      ControllabilityAnswer.transaction do
+        @answers.each(&:save!)
+      end
       redirect_to  new_attachment_path
     else
       flash[:alert] = "エラーが発生しました。未回答がないかご確認ください。"

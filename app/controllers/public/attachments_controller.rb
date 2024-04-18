@@ -16,22 +16,21 @@ class Public::AttachmentsController < ApplicationController
     @answers = []
     #eachでattachment_answerのk(key)とv(value)をattachment_answer_id毎に処理
     params[:attachment_answer].each do |k, v|
-      #@attachment = AttachmentAnswer.newにエラーがあればelseへ飛ぶ
-      #elseへ飛ぶバリデーションはif v.to_i == 0 で'v'が0→未回答の時
+      #if v.to_i == 0 で'v'が0→未回答の時エラー追加
       @attachment.errors.add(:base, '') if v.to_i == 0
-      #k=(:attachment_id),v=(:answer)に指定して@answerに追加
-      @answers << {
-        answer: v.to_i,
-        attachment_id: k.to_i,
-        user_id: current_user.id,
-        created_at: Time.current,
-        updated_at: Time.current
-      }
+      #find_or_initialize_byでattachment_idとuser_idでAttachmentAnswerのレコードを検索(find)
+      #存在しない(新規)は新規作成、存在する場合は既存のデータを呼び出し
+      answer = AttachmentAnswer.find_or_initialize_by(attachment_id: k.to_i, user_id: current_user.id)
+      # answerの属性を入力した内容に更新する
+      answer.update(answer: v.to_i)
+      #answerの情報を@answerに格納
+      @answers << answer
     end
-    #@attachmentでエラーが無い(false)時unless以下へ、エラーがある(true)の時elseへ
+    #エラーが無い(false)時unless以下へ、エラーがある(true)時elseへ
     unless @attachment.errors.any?
-      #@answerをAttachmentAnswerへ一括保存(insert_all)
-      AttachmentAnswer.insert_all @answers
+      AttachmentAnswer.transaction do
+        @answers.each(&:save!)
+      end
       redirect_to  new_playability_path
     else
       flash[:alert] = "エラーが発生しました。未回答がないかご確認ください。"
