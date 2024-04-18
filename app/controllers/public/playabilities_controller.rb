@@ -32,7 +32,7 @@ class Public::PlayabilitiesController < ApplicationController
     unless @playability.errors.any?
       #@answerをPlayabilityAnswerへ一括保存(insert_all)
       PlayabilityAnswer.insert_all @answers
-      redirect_to  analysis_path(user.id)
+      redirect_to analysis_path(current_user.id)
     else
       flash[:alert] = "エラーが発生しました。未回答がないかご確認ください。"
       render :new

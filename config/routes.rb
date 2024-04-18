@@ -19,17 +19,15 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
-    get "/analysis" => "analysis#top"
-    get "/analysis/:id" => "analysis#show"
+    get "/analysis/top" => "analyses#top"
+    get "/analyses/:id", to: "analyses#show", as: "analysis"
     post "/guest_sign_in", to: "homes#guest_sign_in", as: :guest_sign_in
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :index, :update, :destroy]
     resources :tags, only:[:index]
-    resources :emotionalities, only:[:new, :create,:update] do
-      resources :emotionality_answers, only:[:create]
-    end
+    resources :emotionalities, only:[:new, :create,:update]
     resources :extraversions, only:[:new, :create,:update]
     resources :controllabilities, only:[:new, :create,:update]
     resources :attachments, only:[:new, :create,:update]
@@ -41,7 +39,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
-    get "/analysis" => "analysis#index"
+    get "/analysis" => "analyses#index"
     resources :posts, only: [:index, :show, :update, :destroy] do
       resources :post_comments, only: [:destroy]
     end
@@ -49,5 +47,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :tags, only:[:index]
   end
+  #存在しないパスを検索した時'/'へはじかれる
+  match '*path', to: redirect('/'), via: :all
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
