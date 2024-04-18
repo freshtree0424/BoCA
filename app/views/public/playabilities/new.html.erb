@@ -29,7 +29,7 @@
     <h2>素直な気持ちでお答えください</h2>
   </div>
   <div class="row">
-  <%= form_with model: @playability, local:true do |f| %>
+  <%= form_with model: @playability, url: playabilities_path, method: :post do |f| %>
     <table>
       <thead>
         <tr>
@@ -41,20 +41,21 @@
           <th>全くそうだ</th>
         </tr>
       </thead>
-      <tobody>
-        <% @playabilities.each do |playability| %>
-        <%= form_with model: playability, url: { action: "create" }, html: { method: :post } do |f2| %>
+      <tbody>
+        <%#each_with_indexメソッドでボタンにindexを適用させる%>
+        <% @playabilities.each_with_index do |playability, index| %>
+        <%= f.hidden_field "#{playability.id}", value: 0 %>
         <tr>
           <td><%= playability.question %></td>
-          <td><%= f2.radio_button :answer, 1 %></td>
-          <td><%= f2.radio_button :answer, 2 %></td>
-          <td><%= f2.radio_button :answer, 3 %></td>
-          <td><%= f2.radio_button :answer, 4 %></td>
-          <td><%= f2.radio_button :answer, 5 %></td>
+                    <%#ボタンの名前%><%#ボタンの値%><%#@answerで指定された(適用させた)indexと:answer(カラム)がdigメソッドで'1'かどうかをtrue(チェック有),nil(空欄)で返す%>
+          <td><%= f.radio_button playability.id, 1, checked: @answers.dig(index, :answer) == 1 %></td>
+          <td><%= f.radio_button playability.id, 2, checked: @answers.dig(index, :answer) == 2 %></td>
+          <td><%= f.radio_button playability.id, 3, checked: @answers.dig(index, :answer) == 3 %></td>
+          <td><%= f.radio_button playability.id, 4, checked: @answers.dig(index, :answer) == 4 %></td>
+          <td><%= f.radio_button playability.id, 5, checked: @answers.dig(index, :answer) == 5 %></td>
         </tr>
         <% end %>
-        <% end %>
-        </tobody>
+      </tbody>
     </table>
       <div align="center">
         <%= f.submit "次へ", class: "btn btn-success" %>
