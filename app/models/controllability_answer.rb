@@ -1,9 +1,20 @@
 class ControllabilityAnswer < ApplicationRecord
   belongs_to :user
   belongs_to :controllability
-  
-  # レコードごとに回答された値を合計して返すメソッド
-  def self.total_score_for_user(user)
-    where(user: user).sum(:answer)
+
+  #answerの合計点とそれに基づく条件分岐文言
+  def self.total_score_and_grade_for_user(user)
+    score = where(user: user).sum(:answer)
+    grade =
+      case score
+      when 0..30
+        '誠実性は低め。衝動的に行動する予定を先延ばしにする。'
+      when 31..39
+        '誠実性は平均程度。コツコツ続けられることもあれば衝動的になることもある。'
+      else
+        '誠実性は高め。つらい仕事でも淡々と行える性格です。'
+      end
+    return score, grade
   end
+
 end
