@@ -7,32 +7,33 @@
           <tr>
             <th scope="col">神経症傾向</th>
             <th scope="col">点数</th>
+            <th scope="col">項目説明</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">心配性</th>
-            <td>4</td>
+            <td><%= @emotionality1_answers %></td>
             <td>心配性な性質</td>
           </tr>
           <tr>
             <th scope="row">緊張</th>
-            <td>4</td>
+            <td><%= @emotionality2_answers %></td>
             <td>動揺して硬直してしまう性質</td>
           </tr>
           <tr>
             <th scope="row">抑うつ</th>
-            <td>2</td>
+            <td><%= @emotionality3_answers %></td>
             <td>気分が抑制される、マイナス思考</td>
           </tr>
           <tr>
             <th scope="row">自己批判</th>
-            <td>2</td>
+            <td><%= @emotionality4_answers %></td>
             <td>他人より自己評価が低く感じる性質</td>
           </tr>
           <tr>
             <th scope="row">気分変動</th>
-            <td>5</td>
+            <td><%= @emotionality5_answers %></td>
             <td>気分の浮き沈みの激しさ</td>
           </tr>
         </tbody>
@@ -40,136 +41,160 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-6">
       <table class="table">
         <thead>
           <tr>
             <th scope="col">外向性</th>
             <th scope="col">点数</th>
+            <th scope="col">項目説明</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">活動</th>
-            <td>4</td>
+            <td><%= @extraversion1_answers %></td>
+            <td>活動的な性質</td>
           </tr>
           <tr>
             <th scope="row">支配</th>
-            <td>4</td>
+            <td><%= @extraversion2_answers %></td>
+            <td>リーダーシップ・他人をコントロールしたい性質</td>
           </tr>
           <tr>
             <th scope="row">群居</th>
-            <td>2</td>
+            <td><%= @extraversion3_answers %></td>
+            <td>みんなでワイワイする性質</td>
           </tr>
           <tr>
             <th scope="row">興奮追及</th>
-            <td>2</td>
+            <td><%= @extraversion4_answers %></td>
+            <td>刺激が強い環境を好み、競争が好き</td>
           </tr>
           <tr>
             <th scope="row">注意獲得</th>
-            <td>5</td>
+            <td><%= @extraversion5_answers %></td>
+            <td>目立ったり他人に注目されたりする性質</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-6">
       <table class="table">
         <thead>
           <tr>
             <th scope="col">誠実性</th>
             <th scope="col">点数</th>
+            <th scope="col">項目説明</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">几帳面</th>
-            <td>4</td>
+            <td><%= @controllability1_answers %></td>
+            <td>几帳面な性質</td>
           </tr>
           <tr>
             <th scope="row">執着</th>
-            <td>4</td>
+            <td><%= @controllability2_answers %></td>
+            <td>難しい事でも根気よく続ける性質</td>
           </tr>
           <tr>
             <th scope="row">責任感</th>
-            <td>2</td>
+            <td><%= @controllability3_answers %></td>
+            <td>約束を守り、決めたことを貫く性質</td>
           </tr>
           <tr>
             <th scope="row">自己統制</th>
-            <td>2</td>
+            <td><%= @controllability4_answers %></td>
+            <td>衝動や欲望に流されず、感情をコントロールする性質</td>
           </tr>
           <tr>
             <th scope="row">計画</th>
-            <td>5</td>
+            <td><%= @controllability5_answers %></td>
+            <td>綿密なプランを立てる性質</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-6">
       <table class="table">
         <thead>
           <tr>
             <th scope="col">調和性</th>
             <th scope="col">点数</th>
+            <th scope="col">項目説明</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">温厚</th>
-            <td>4</td>
+            <td><%= @attachment1_answers %></td>
+            <td>他人に優しくする性質</td>
           </tr>
           <tr>
             <th scope="row">協調</th>
-            <td>4</td>
+            <td><%= @attachment2_answers %></td>
+            <td>周囲に誰かがいると気を遣う性質</td>
           </tr>
           <tr>
             <th scope="row">信頼</th>
-            <td>2</td>
+            <td><%= @attachment3_answers %></td>
+            <td>他人をすぐに好きになり信用する性質</td>
           </tr>
           <tr>
             <th scope="row">共感</th>
-            <td>2</td>
+            <td><%= @attachment4_answers %></td>
+            <td>他人の感情を自分事のように感じる性質</td>
           </tr>
           <tr>
             <th scope="row">他者尊重</th>
-            <td>5</td>
+            <td><%= @attachment5_answers %></td>
+            <td>他人を見下さず、平等に接する性質</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-6">
       <table class="table">
         <thead>
           <tr>
             <th scope="col">開放性</th>
             <th scope="col">点数</th>
+            <th scope="col">項目説明</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">進取</th>
-            <td>4</td>
+            <td><%= @playability1_answers %></td>
+            <td>自分から進んで物事をする性質</td>
           </tr>
           <tr>
             <th scope="row">空想</th>
-            <td>4</td>
+            <td><%= @playability2_answers %></td>
+            <td>頭の中での発想・イメージが活動的な性質</td>
           </tr>
           <tr>
             <th scope="row">芸術への関心</th>
-            <td>2</td>
+            <td><%= @playability3_answers %></td>
+            <td>芸術への関心がある性質</td>
           </tr>
           <tr>
             <th scope="row">内向経験への敏感</th>
-            <td>2</td>
+            <td><%= @playability4_answers %></td>
+            <td>自分への関心や感情が高い性質</td>
           </tr>
           <tr>
             <th scope="row">奔放</th>
-            <td>5</td>
+            <td><%= @playability5_answers %></td>
+            <td>ルールを無視し、自分の思うままに行動する性質</td>
           </tr>
         </tbody>
       </table>

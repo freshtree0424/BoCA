@@ -41,4 +41,35 @@ class User < ApplicationRecord
     end
   end
 
+  #カテゴリー別合計点
+  (1..5).each do |category_id|
+    define_method "category#{category_id}_answers_sum" do
+      emotionality_answers.joins(:emotionality).where(emotionality: { category_id: category_id }).sum(:answer)
+    end
+  end
+
+  (6..10).each do |category_id|
+    define_method "category#{category_id}_answers_sum" do
+      extraversion_answers.joins(:extraversion).where(extraversion: { category_id: category_id }).sum(:answer)
+    end
+  end
+
+  (11..15).each do |category_id|
+    define_method "category#{category_id}_answers_sum" do
+      controllability_answers.joins(:controllability).where(controllability: { category_id: category_id }).sum(:answer)
+    end
+  end
+
+  (16..20).each do |category_id|
+    define_method "category#{category_id}_answers_sum" do
+      attachment_answers.joins(:attachment).where(attachment: { category_id: category_id }).sum(:answer)
+    end
+  end
+
+  (21..25).each do |category_id|
+    define_method "category#{category_id}_answers_sum" do
+      playability_answers.joins(:playability).where(playability: { category_id: category_id }).sum(:answer)
+    end
+  end
+
 end
