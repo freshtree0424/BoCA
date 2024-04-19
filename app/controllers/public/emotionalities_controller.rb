@@ -11,6 +11,7 @@ class Public::EmotionalitiesController < ApplicationController
   end
 
   def create
+    user_id = current_user.id
     @emotionalities = Emotionality.all
     @emotionality = EmotionalityAnswer.new
     @answers = []
@@ -18,6 +19,9 @@ class Public::EmotionalitiesController < ApplicationController
     params[:emotionality_answer].each do |k, v|
       #if v.to_i == 0 で'v'が0→未回答の時エラー追加
       @emotionality.errors.add(:base, '') if v.to_i == 0
+      #点数の逆転項目指定
+      EmotionalityAnswer.find_by(user_id: user_id, emotionality_id: 1)&.reverse_answer(1)
+      EmotionalityAnswer.find_by(user_id: user_id, emotionality_id: 3)&.reverse_answer(3)
       #find_or_initialize_byでemotionality_idとuser_idでEmotionalityAnswerのレコードを検索(find)
       #存在しない(新規)は新規作成、存在する場合は既存のデータを呼び出し
       answer = EmotionalityAnswer.find_or_initialize_by(emotionality_id: k.to_i, user_id: current_user.id)

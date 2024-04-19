@@ -16,5 +16,14 @@ class ControllabilityAnswer < ApplicationRecord
       end
     return score, grade
   end
+  
+  #特定のquestionの回答を逆転させるメソッド
+  def reverse_answer(controllability_id)
+    # 特定のcontrollabilityに関連するControllabilityAnswerを取得
+    answer = ControllabilityAnswer.find_by(controllability_id: controllability_id, user_id: user_id)
+    return unless answer # 該当する回答が見つからない場合は何もしない
+    # 回答を逆転させる
+    answer.update(answer: 6 - answer.answer)
+  end
 
 end

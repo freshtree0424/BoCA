@@ -1,5 +1,6 @@
 <div class="container">
-      <h2><%= @user.name %>さんの性格分析内訳</h2>
+      <h2><%= @user.name %>さんの性格分析内訳</h2><br>
+      <h4>各項目10点満点</h4>
   <div class="row">
     <div class="col-6">
       <table class="table">
@@ -109,7 +110,7 @@
           <tr>
             <th scope="row">自己統制</th>
             <td><%= @controllability4_answers %></td>
-            <td>衝動や欲望に流されず、感情をコントロールする性質</td>
+            <td>衝動や欲望に流されず、<br>感情をコントロールする性質</td>
           </tr>
           <tr>
             <th scope="row">計画</th>
@@ -194,7 +195,7 @@
           <tr>
             <th scope="row">奔放</th>
             <td><%= @playability5_answers %></td>
-            <td>ルールを無視し、自分の思うままに行動する性質</td>
+            <td>ルールを無視し、<br>自分の思うままに行動する性質</td>
           </tr>
         </tbody>
       </table>

@@ -11,6 +11,7 @@ class Public::PlayabilitiesController < ApplicationController
   end
 
   def create
+    user_id = current_user.id
     @playability = PlayabilityAnswer.new
     @playabilities = Playability.all
     @answers = []
@@ -18,6 +19,9 @@ class Public::PlayabilitiesController < ApplicationController
     params[:playability_answer].each do |k, v|
       #if v.to_i == 0 で'v'が0→未回答の時エラー追加
       @playability.errors.add(:base, '') if v.to_i == 0
+      #点数の逆転項目指定
+      PlayabilityAnswer.find_by(user_id: user_id, playability_id: 4)&.reverse_answer(4)
+      PlayabilityAnswer.find_by(user_id: user_id, playability_id: 5)&.reverse_answer(5)
       #find_or_initialize_byでplayability_idとuser_idでPlayabilityAnswerのレコードを検索(find)
       #存在しない(新規)は新規作成、存在する場合は既存のデータを呼び出し
       answer = PlayabilityAnswer.find_or_initialize_by(playability_id: k.to_i, user_id: current_user.id)

@@ -11,6 +11,7 @@ class Public::AttachmentsController < ApplicationController
   end
 
   def create
+    user_id = current_user.id
     @attachment = AttachmentAnswer.new
     @attachments = Attachment.all
     @answers = []
@@ -18,6 +19,11 @@ class Public::AttachmentsController < ApplicationController
     params[:attachment_answer].each do |k, v|
       #if v.to_i == 0 で'v'が0→未回答の時エラー追加
       @attachment.errors.add(:base, '') if v.to_i == 0
+      #点数の逆転項目指定
+      AttachmentAnswer.find_by(user_id: user_id, attachment_id: 2)&.reverse_answer(2)
+      AttachmentAnswer.find_by(user_id: user_id, attachment_id: 6)&.reverse_answer(6)
+      AttachmentAnswer.find_by(user_id: user_id, attachment_id: 8)&.reverse_answer(8)
+      AttachmentAnswer.find_by(user_id: user_id, attachment_id: 10)&.reverse_answer(10)
       #find_or_initialize_byでattachment_idとuser_idでAttachmentAnswerのレコードを検索(find)
       #存在しない(新規)は新規作成、存在する場合は既存のデータを呼び出し
       answer = AttachmentAnswer.find_or_initialize_by(attachment_id: k.to_i, user_id: current_user.id)

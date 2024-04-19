@@ -11,13 +11,17 @@ class Public::ExtraversionsController < ApplicationController
   end
 
   def create
+    user_id = current_user.id
     @extraversion = ExtraversionAnswer.new
     @extraversions = Extraversion.all
     @answers = []
-    #eachでextraversion_answerのk(key)とv(value)をemotionality_answer_id毎に処理
+    #eachでextraversion_answerのk(key)とv(value)をextraversion_answer_id毎に処理
     params[:extraversion_answer].each do |k, v|
       #if v.to_i == 0 で'v'が0→未回答の時エラー追加
       @extraversion.errors.add(:base, '') if v.to_i == 0
+      #点数の逆転項目指定
+      ExtraversionAnswer.find_by(user_id: user_id, extraversion_id: 1)&.reverse_answer(1)
+      ExtraversionAnswer.find_by(user_id: user_id, extraversion_id: 10)&.reverse_answer(10)
       #find_or_initialize_byでextraversion_idとuser_idでExtraversionAnswerのレコードを検索(find)
       #存在しない(新規)は新規作成、存在する場合は既存のデータを呼び出し
       answer = ExtraversionAnswer.find_or_initialize_by(extraversion_id: k.to_i, user_id: current_user.id)
