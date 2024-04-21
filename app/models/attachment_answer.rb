@@ -16,7 +16,7 @@ class AttachmentAnswer < ApplicationRecord
       end
     return score, grade
   end
-  
+
   #特定のquestionの回答を逆転させるメソッド
   def reverse_answer(attachment_id)
     # 特定のattachmentに関連するAttachmentAnswerを取得

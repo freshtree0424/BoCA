@@ -16,7 +16,7 @@ class ControllabilityAnswer < ApplicationRecord
       end
     return score, grade
   end
-  
+
   #特定のquestionの回答を逆転させるメソッド
   def reverse_answer(controllability_id)
     # 特定のcontrollabilityに関連するControllabilityAnswerを取得

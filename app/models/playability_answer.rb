@@ -25,5 +25,5 @@ class PlayabilityAnswer < ApplicationRecord
     # 回答を逆転させる
     answer.update(answer: 6 - answer.answer)
   end
-  
+
 end

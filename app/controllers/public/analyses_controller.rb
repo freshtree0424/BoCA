@@ -55,6 +55,13 @@ class Public::AnalysesController < ApplicationController
     @playability3_answers = @user.category23_answers_sum
     @playability4_answers = @user.category24_answers_sum
     @playability5_answers = @user.category25_answers_sum
+    #chart用変数
+    gon.user = User.find_by(id: params[:id])
+    gon.emotionality_total_score = EmotionalityAnswer.total_score_and_grade_for_user(@user)
+    gon.extraversion_total_score = ExtraversionAnswer.total_score_and_grade_for_user(@user)
+    gon.controllability_total_score = ControllabilityAnswer.total_score_and_grade_for_user(@user)
+    gon.attachment_total_score = AttachmentAnswer.total_score_and_grade_for_user(@user)
+    gon.playability_total_score = PlayabilityAnswer.total_score_and_grade_for_user(@user)
   end
 
 end
