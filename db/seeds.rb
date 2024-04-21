@@ -29,7 +29,7 @@ initial_users = [
   },
 ]
 initial_users.each.with_index(1) do |user, i|
-  user["email"] = "#{TEST_GMAIL_ACCOUNT_NAME}+test#{i}@gmail.com"
+  user["email"] = "#{TEST_GMAIL_ACCOUNT_NAME}+test#{i}@example.com"
   user["password"] = TEST_PASSWORD
   user["password_confirmation"] = TEST_PASSWORD
   User.create!(user)
@@ -148,42 +148,52 @@ Category.create(initial_categories)
 #Emテーブル
 initial_emotionalities = [
   {
+#    emotionality_id: 1,
     category_id: 1,
     question: "小さなことにはくよくよしない"
   },
   {
+#    emotionality_id: 2,
     category_id: 1,
     question: "ものごとがうまく行かないのではないかと，よく心配する"
   },
   {
+#    emotionality_id: 3,
     category_id: 2,
     question: "緊張してふるえるようなことはない"
   },
   {
+#    emotionality_id: 4,
     category_id: 2,
     question: "よく緊張する"
   },
   {
+#    emotionality_id: 5,
     category_id: 3,
     question: "見捨てられた感じがする"
   },
   {
+#    emotionality_id: 6,
     category_id: 3,
     question: "憂鬱になりやすい"
   },
   {
+#    emotionality_id: 7,
     category_id: 4,
     question: "自分がみじめな人間に思える"
   },
   {
+#    emotionality_id: 8,
     category_id: 4,
     question: "自分には全然価値がないように思えることがある"
   },
   {
+#    emotionality_id: 9,
     category_id: 5,
     question: "陽気になったり陰気になったり，気分が変りやすい"
   },
   {
+#    emotionality_id: 10,
     category_id: 5,
     question: "明るいときと暗いときの気分の差が大きい"
   },
@@ -193,42 +203,52 @@ Emotionality.create(initial_emotionalities)
 #Exテーブル
 initial_extraversions = [
   {
+#    extraversion_id: 1,
     category_id: 6,
     question: "もの静かである"
   },
   {
+#    extraversion_id: 2,
     category_id: 6,
     question: "じっとしているのが嫌いである"
   },
   {
+#   extraversion_id: 3,
     category_id: 7,
     question: "人の上に立つことが多い"
   },
   {
+#    extraversion_id: 4,
     category_id: 7,
     question: "人に指示を与えるような立場に立つことが多い"
   },
   {
+#   extraversion_id: 5,
     category_id: 8,
     question: "大勢でわいわい騒ぐのが好きである"
   },
   {
+#    extraversion_id: 6,
     category_id: 8,
     question: "大勢の人の中にいるのが好きである"
   },
   {
+#    extraversion_id: 7,
     category_id: 9,
     question: "スポーツ観戦で我を忘れて応援することがある"
   },
   {
+#    extraversion_id: 8,
     category_id: 9,
     question: "にぎやかな所が好きである"
   },
   {
+#    extraversion_id: 9,
     category_id: 10,
     question: "人から注目されるとうれしい"
   },
   {
+ #   extraversion_id: 10,
     category_id: 10,
     question: "地味で目立つことはない"
   },
@@ -238,42 +258,52 @@ Extraversion.create(initial_extraversions)
 #Cテーブル
 initial_controllabilities = [
   {
+#    controllability_id: 1,
     category_id: 11,
     question: "あまりきっちりした人間ではない"
   },
   {
+#    controllability_id: 2,
     category_id: 11,
     question: "几帳面である"
   },
   {
+#    controllability_id: 3,
     category_id: 12,
     question: "根気が続かないほうである"
   },
   {
+#    controllability_id: 4,
     category_id: 12,
     question: "まじめな努力家である"
   },
   {
+#    controllability_id: 5,
     category_id: 13,
     question: "責任感が乏しいといわれることがある"
   },
   {
+#    controllability_id: 6,
     category_id: 13,
     question: "仕事を投げやりにしてしまうことがある"
   },
   {
+#    controllability_id: 7,
     category_id: 14,
     question: "欲望のままに行動してしまうようなことは，ほとんどない"
   },
   {
+ #   controllability_id: 8,
     category_id: 14,
     question: "しんどいことはやりたくない"
   },
   {
+#    controllability_id: 9,
     category_id: 15,
     question: "よく考えてから行動する"
   },
   {
+#    controllability_id: 10,
     category_id: 15,
     question: "仕事は計画的にするようにしている"
   },
@@ -283,42 +313,52 @@ Controllability.create(initial_controllabilities)
 #Aテーブル
 initial_attachments = [
   {
+#    attachment_id: 1,
     category_id: 16,
     question: "人には暖かく友好的に接している"
   },
   {
+#    attachment_id: 2,
     category_id: 16,
     question: "あまり親切な人間ではない"
   },
   {
+#    attachment_id: 3,
     category_id: 17,
     question: "人情深いほうだと思う"
   },
   {
+#    attachment_id: 4,
     category_id: 17,
     question: "気配りをするほうである"
   },
   {
+#    attachment_id: 5,
     category_id: 18,
     question: "出会った人はたいがい好きになる"
   },
   {
+#    attachment_id: 6,
     category_id: 18,
     question: "どうしても好きになれない人がたくさんいる"
   },
   {
+#    attachment_id: 7,
     category_id: 19,
     question: "人のよろこびを自分のことのように喜べる"
   },
   {
+#    attachment_id: 8,
     category_id: 19,
     question: "人の気持ちを積極的に理解しようとは思わない"
   },
   {
+#    attachment_id: 9,
     category_id: 20,
     question: "誰に対しても優しく親切にふるまうようにしている"
   },
   {
+#    attachment_id: 10,
     category_id: 20,
     question: "人を馬鹿にしているといわれることがある"
   },
@@ -328,42 +368,52 @@ Attachment.create(initial_attachments)
 #Pテーブル
 initial_playabilities = [
   {
+#    playability_id: 1,
     category_id: 21,
     question: "考えることは面白い"
   },
   {
+#    playability_id: 2,
     category_id: 21,
     question: "好奇心が強い"
   },
   {
+#    playability_id: 3,
     category_id: 22,
     question: "イメージがあふれ出てくる"
   },
   {
+#    playability_id: 4,
     category_id: 22,
     question: "空想の世界をさまようことはほとんどない"
   },
   {
+#    playability_id: 5,
     category_id: 23,
     question: "美や芸術にはあまり関心がない"
   },
   {
+#    playability_id: 6,
     category_id: 23,
     question: "芸術作品に接すると鳥肌がたち興奮をおぼえることがある"
   },
   {
+#    playability_id: 7,
     category_id: 24,
     question: "自分の感じたことを大切にする"
   },
   {
+#    playability_id: 8,
     category_id: 24,
     question: "感情豊かな人間である"
   },
   {
+#    playability_id: 9,
     category_id: 25,
     question: "変わった人だとよくいわれる"
   },
   {
+#    playability_id: 10,
     category_id: 25,
     question: "別世界に行ってみたい"
   },

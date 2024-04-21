@@ -13,7 +13,7 @@
 <p><%= @playability_grade %></p>
 
 
-<h1>グラフ</h1>
+<h1><%= @user.name %>さんのグラフ</h1>
   <canvas id="myRadarChart"></canvas>
   <script>
   var ctx = document.getElementById("myRadarChart");
@@ -29,8 +29,14 @@
           backgroundColor: "rgba(0,0,0,0)"
         },
         {
-          label: '名前',
-          data: [19, 28, 27, 31, 32],
+          label: '<%= @user.name %>さん',
+          data: [
+            <%= @emotionality_total_score || 0 %>,
+            <%= @extraversion_total_score || 0 %>,
+            <%= @controllability_total_score || 0 %>,
+            <%= @attachment_total_score || 0 %>,
+            <%= @playability_total_score || 0 %>
+          ],
           borderColor: "rgba(0,0,255,1)",
           backgroundColor: "rgba(0,0,0,0)"
         }
@@ -46,7 +52,7 @@
           suggestedMin: 0,
           stepSize: 10,
           callback: function(value, index, values){
-            return  value 
+            return  value
           }
         }
       }
