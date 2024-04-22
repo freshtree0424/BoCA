@@ -7,7 +7,7 @@ class Public::UsersController < PublicController
       @users = User.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
       @heading = "「#{params[:search]}」の検索結果"
     else
-      @users = User.all
+      @users = User.page(params[:page])
       @heading = "会員一覧"
     end
   end
@@ -19,7 +19,7 @@ class Public::UsersController < PublicController
       redirect_to root_path
       return
     end
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page])
     @post = Post.new
     @tag_lists = {}
     @posts.each do |post|

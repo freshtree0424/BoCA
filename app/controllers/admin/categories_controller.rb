@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update]
 
   def index
-    @categories = Category.all
+    @categories = Category.page(params[:page])
     @category = Category.new
   end
 

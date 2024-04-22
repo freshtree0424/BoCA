@@ -23,9 +23,12 @@
             <% end %>
         </td>
         <td><%= render "public/posts/static_rate", post: post %></td>
-        <td><i class="fa-solid fa-eye"></i><%= "#{post.post_comments.count}" %></td>
-        <td><i class="fa-solid fa-comment-dots"></i><%= post.view_counts.count %></td>
+        <td><i class="fa-solid fa-comment-dots"></i><%= "#{post.post_comments.count}" %></td>
+        <td><i class="fa-solid fa-eye"></i><%= post.view_counts.count %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<div class="d-flex justify-content-center">
+  <%= paginate posts %>
+</div>
