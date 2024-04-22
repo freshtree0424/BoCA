@@ -11,7 +11,7 @@ class Public::PostsController < PublicController
       @posts = Post.where("title LIKE ?", "%#{params[:search]}%") if params[:search].present?
       @heading = "「#{params[:search]}」の検索結果"
     else
-      @posts = Post.all.order(created_at: :asc)
+      @posts = Post.all.order(created_at: :desc)
       @heading = "投稿一覧"
     end
     @tag_lists = {}

@@ -19,13 +19,17 @@ class Public::UsersController < PublicController
       redirect_to root_path
       return
     end
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
     @post = Post.new
     @tag_lists = {}
     @posts.each do |post|
       @tag_lists[post.id] = post.tags.pluck(:name).join(',')
     end
-    # byebug
+    @emotionality_total_score, @emotionality_grade = EmotionalityAnswer.total_score_and_grade_for_user(@user)
+    @extraversion_total_score, @extraversion_grade = ExtraversionAnswer.total_score_and_grade_for_user(@user)
+    @controllability_total_score, @controllability_grade = ControllabilityAnswer.total_score_and_grade_for_user(@user)
+    @attachment_total_score, @attachment_grade = AttachmentAnswer.total_score_and_grade_for_user(@user)
+    @playability_total_score, @playability_grade = PlayabilityAnswer.total_score_and_grade_for_user(@user)
   end
 
   def edit
