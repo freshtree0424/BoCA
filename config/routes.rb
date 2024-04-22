@@ -48,7 +48,5 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :tags, only:[:index]
   end
-  #存在しないパスを検索した時'/'へはじかれる
-  match '*path', to: redirect('/'), via: :all
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
