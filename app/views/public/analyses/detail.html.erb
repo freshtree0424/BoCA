@@ -40,6 +40,49 @@
         </tbody>
       </table>
     </div>
+    <div class="col-6">
+      <canvas id="myBarChart1"></canvas>
+      <script>
+        var ctx = document.getElementById("myBarChart1");
+        var myBarChart1 = new Chart(ctx, {
+            type: 'horizontalBar',
+             data: {
+              labels: ['心配性', '緊張', '抑うつ', '自己批判', '気分変動'],
+              datasets: [
+                {
+                   label: '<%= @user.name %>さん',
+                  data: [
+                    <%= @emotionality1_answers || 0 %>,
+                    <%= @emotionality2_answers || 0 %>,
+                    <%= @emotionality3_answers || 0 %>,
+                    <%= @emotionality4_answers || 0 %>,
+                    <%= @emotionality5_answers || 0 %>
+                  ],
+                  borderColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,255,1)"
+                }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+              },
+              scales: {
+                xAxes: [{
+                  ticks: {
+                    suggestedMax: 10,
+                    suggestedMin: 0,
+                    stepSize: 2,
+                    callback: function(value, index, values){
+                      return  value
+                    }
+                  }
+                }]
+              },
+            }
+        });
+      </script>
+    </div>
   </div>
   <div class="row">
     <div class="col-6">
@@ -79,6 +122,49 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="col-6">
+      <canvas id="myBarChart2"></canvas>
+      <script>
+        var ctx = document.getElementById("myBarChart2");
+        var myBarChart2 = new Chart(ctx, {
+            type: 'horizontalBar',
+             data: {
+              labels: ['活動', '支配', '群居', '興奮追及', '注意獲得'],
+              datasets: [
+                {
+                   label: '<%= @user.name %>さん',
+                  data: [
+                    <%= @extraversion1_answers || 0 %>,
+                    <%= @extraversion2_answers || 0 %>,
+                    <%= @extraversion3_answers || 0 %>,
+                    <%= @extraversion4_answers || 0 %>,
+                    <%= @extraversion5_answers || 0 %>
+                  ],
+                  borderColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,255,1)"
+                }
+              ],
+            },
+            options: {
+          title: {
+            display: true,
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                suggestedMax: 10,
+                suggestedMin: 0,
+                stepSize: 2,
+                callback: function(value, index, values){
+                  return  value
+                }
+              }
+            }]
+          },
+        }
+        });
+      </script>
     </div>
   </div>
   <div class="row">
@@ -120,6 +206,49 @@
         </tbody>
       </table>
     </div>
+    <div class="col-6">
+      <canvas id="myBarChart3"></canvas>
+      <script>
+        var ctx = document.getElementById("myBarChart3");
+        var myBarChart3 = new Chart(ctx, {
+            type: 'horizontalBar',
+             data: {
+              labels: ['几帳面', '執着', '責任感', '自己統制', '計画'],
+              datasets: [
+                {
+                   label: '<%= @user.name %>さん',
+                  data: [
+                    <%= @controllability1_answers || 0 %>,
+                    <%= @controllability2_answers || 0 %>,
+                    <%= @controllability3_answers || 0 %>,
+                    <%= @controllability4_answers || 0 %>,
+                    <%= @controllability5_answers || 0 %>
+                  ],
+                  borderColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,255,1)"
+                }
+              ],
+            },
+            options: {
+          title: {
+            display: true,
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                suggestedMax: 10,
+                suggestedMin: 0,
+                stepSize: 2,
+                callback: function(value, index, values){
+                  return  value
+                }
+              }
+            }]
+          },
+        }
+        });
+      </script>
+    </div>
   </div>
   <div class="row">
     <div class="col-6">
@@ -160,6 +289,49 @@
         </tbody>
       </table>
     </div>
+    <div class="col-6">
+      <canvas id="myBarChart4"></canvas>
+      <script>
+        var ctx = document.getElementById("myBarChart4");
+        var myBarChart4 = new Chart(ctx, {
+            type: 'horizontalBar',
+             data: {
+              labels: ['温厚', '協調', '信頼', '共感', '他者尊重'],
+              datasets: [
+                {
+                   label: '<%= @user.name %>さん',
+                  data: [
+                    <%= @attachment1_answers || 0 %>,
+                    <%= @attachment2_answers || 0 %>,
+                    <%= @attachment3_answers || 0 %>,
+                    <%= @attachment4_answers || 0 %>,
+                    <%= @attachment5_answers || 0 %>
+                  ],
+                  borderColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,255,1)"
+                }
+              ],
+            },
+            options: {
+          title: {
+            display: true,
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                suggestedMax: 10,
+                suggestedMin: 0,
+                stepSize: 2,
+                callback: function(value, index, values){
+                  return  value
+                }
+              }
+            }]
+          },
+        }
+        });
+      </script>
+    </div>
   </div>
   <div class="row">
     <div class="col-6">
@@ -199,6 +371,49 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="col-6">
+      <canvas id="myBarChart5"></canvas>
+      <script>
+        var ctx = document.getElementById("myBarChart5");
+        var myBarChart5 = new Chart(ctx, {
+            type: 'horizontalBar',
+             data: {
+              labels: ['進取', '空想', '芸術への関心', '内向経験への敏感', '奔放'],
+              datasets: [
+                {
+                   label: '<%= @user.name %>さん',
+                  data: [
+                    <%= @playability1_answers || 0 %>,
+                    <%= @playability2_answers || 0 %>,
+                    <%= @playability3_answers || 0 %>,
+                    <%= @playability4_answers || 0 %>,
+                    <%= @playability5_answers || 0 %>
+                  ],
+                  borderColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,255,1)"
+                }
+              ],
+            },
+            options: {
+          title: {
+            display: true,
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                suggestedMax: 10,
+                suggestedMin: 0,
+                stepSize: 2,
+                callback: function(value, index, values){
+                  return  value
+                }
+              }
+            }]
+          },
+        }
+        });
+      </script>
     </div>
   </div>
 </div>
