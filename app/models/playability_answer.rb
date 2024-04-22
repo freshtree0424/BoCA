@@ -17,13 +17,4 @@ class PlayabilityAnswer < ApplicationRecord
     return score, grade
   end
 
-  #特定のquestionの回答を逆転させるメソッド
-  def reverse_answer(playability_id)
-    # 特定のplayabilityに関連するPlayabilityAnswerを取得
-    answer = PlayabilityAnswer.find_by(playability_id: playability_id, user_id: user_id)
-    return unless answer # 該当する回答が見つからない場合は何もしない
-    # 回答を逆転させる
-    answer.update(answer: 6 - answer.answer)
-  end
-
 end
