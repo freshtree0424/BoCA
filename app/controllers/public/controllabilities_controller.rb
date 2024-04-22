@@ -5,7 +5,7 @@ class Public::ControllabilitiesController < ApplicationController
   def new
     #ControllabilityAnswerのanswerへ保存するためにnewで作成
     @controllability = ControllabilityAnswer.new
-    @controllabilities = Controllability.all
+    @controllabilities = Controllability.all.sample(10)
     #answer保存の為の空データを作成、renderで戻ってきたときに入力済のデータを表示する
     @answers = []
   end

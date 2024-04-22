@@ -5,7 +5,7 @@ class Public::EmotionalitiesController < ApplicationController
   def new
     #EmotionalityAnswerのanswerへ保存するためにnewで作成
     @emotionality = EmotionalityAnswer.new
-    @emotionalities = Emotionality.all
+    @emotionalities = Emotionality.all.sample(10)
     #answer保存の為の空データを作成、renderで戻ってきたときに入力済のデータを表示する
     @answers = []
   end

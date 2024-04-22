@@ -5,7 +5,7 @@ class Public::PlayabilitiesController < ApplicationController
   def new
     #PlayabilityAnswerのanswerへ保存するためにnewで作成
     @playability = PlayabilityAnswer.new
-    @playabilities = Playability.all
+    @playabilities = Playability.all.sample(10)
     #answer保存の為の空データを作成、renderで戻ってきたときに入力済のデータを表示する
     @answers = []
   end

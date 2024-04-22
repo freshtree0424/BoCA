@@ -5,7 +5,7 @@ class Public::AttachmentsController < ApplicationController
   def new
     #AttachmentAnswerのanswerへ保存するためにnewで作成
     @attachment = AttachmentAnswer.new
-    @attachments = Attachment.all
+    @attachments = Attachment.all.sample(10)
     #answer保存の為の空データを作成、renderで戻ってきたときに入力済のデータを表示する
     @answers = []
   end

@@ -5,7 +5,7 @@ class Public::ExtraversionsController < ApplicationController
   def new
     #ExtraversionAnswerのanswerへ保存するためにnewで作成
     @extraversion = ExtraversionAnswer.new
-    @extraversions = Extraversion.all
+    @extraversions = Extraversion.all.sample(10)
     #answer保存の為の空データを作成、renderで戻ってきたときに入力済のデータを表示する
     @answers = []
   end
