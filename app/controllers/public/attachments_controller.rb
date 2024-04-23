@@ -11,7 +11,6 @@ class Public::AttachmentsController < ApplicationController
   end
 
   def create
-    user_id = current_user.id
     @attachment = AttachmentAnswer.new
     @attachments = Attachment.all
     @answers = []

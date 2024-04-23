@@ -11,7 +11,6 @@ class Public::ControllabilitiesController < ApplicationController
   end
 
   def create
-    user_id = current_user.id
     @controllability = ControllabilityAnswer.new
     @controllabilities = Controllability.all
     @answers = []

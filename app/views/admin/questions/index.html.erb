@@ -1,0 +1,59 @@
+<div class="container">
+  <h2>質問一覧</h2>
+  <%= link_to '質問作成', admin_questions_select_path, class: "btn btn-sm btn-success" %>
+  <%= link_to 'カテゴリー一覧',  admin_categories_path, class: "btn btn-sm btn-success" %>
+  <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">項目</th>
+          <th scope="col">カテゴリー</th>
+          <th scope="col">質問項目</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @emotionalities.each do |emotionality| %>
+        <tr>
+          <th scope="row"><%= emotionality.id %></th>
+          <td>神経症傾向</td>
+          <td><%= emotionality.category.name %></td>
+          <td><%= emotionality.question %></td>
+        </tr>
+        <% end %>
+        <% @extraversions.each do |extraversion| %>
+        <tr>
+          <th scope="row"><%= extraversion.id %></th>
+          <td>外向性</td>
+          <td><%= extraversion.category.name %></td>
+          <td><%= extraversion.question %></td>
+        </tr>
+        <% end %>
+        <% @controllabilities.each do |controllability| %>
+        <tr>
+          <th scope="row"><%= controllability.id %></th>
+          <td>誠実性</td>
+          <td><%= controllability.category.name %></td>
+          <td><%= controllability.question %></td>
+        </tr>
+        <% end %>
+        <% @attachments.each do |attachment| %>
+        <tr>
+          <th scope="row"><%= attachment.id %></th>
+          <td>調和性</td>
+          <td><%= attachment.category.name %></td>
+          <td><%= attachment.question %></td>
+        </tr>
+        <% end %>
+        <% @playabilities.each do |playability| %>
+        <tr>
+          <th scope="row"><%= playability.id %></th>
+          <td>開放性</td>
+          <td><%= playability.category.name %></td>
+          <td><%= playability.question %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

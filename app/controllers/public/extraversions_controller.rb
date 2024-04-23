@@ -11,7 +11,6 @@ class Public::ExtraversionsController < ApplicationController
   end
 
   def create
-    user_id = current_user.id
     @extraversion = ExtraversionAnswer.new
     @extraversions = Extraversion.all
     @answers = []

@@ -1,6 +1,6 @@
 class Admin::HomesController < AdminController
   def top
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc).page(params[:page])
     @tag_lists = {}
     @posts.each do |post|
       @tag_lists[post.id] = post.tags.pluck(:name).join(',')

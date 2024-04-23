@@ -9,7 +9,7 @@ class Public::PostsController < PublicController
   def index
     if params[:search].present?
       search_posts = Post.select { |post| post.title.include?(params[:search]) }
-      @posts = Kaminari.paginate_array(search_posts).page(params[:page])      
+      @posts = Kaminari.paginate_array(search_posts).page(params[:page])
       @heading = "「#{params[:search]}」の検索結果"
     else
       @posts = Post.all.order(created_at: :desc).page(params[:page])

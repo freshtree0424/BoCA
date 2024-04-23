@@ -11,7 +11,6 @@ class Public::EmotionalitiesController < ApplicationController
   end
 
   def create
-    user_id = current_user.id
     @emotionalities = Emotionality.all
     @emotionality = EmotionalityAnswer.new
     @answers = []

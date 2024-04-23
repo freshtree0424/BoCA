@@ -41,12 +41,19 @@ Rails.application.routes.draw do
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
     get "/analysis" => "analyses#index"
+    get "/questions" => "questions#index", as: "questions"
+    get "/questions/select" => "questions#select", as: "questions_select"
     resources :posts, only: [:index, :show, :update, :destroy] do
       resources :post_comments, only: [:destroy]
     end
     resources :users, only: [:index, :show]
     resources :categories, only: [:index, :create, :edit, :update]
     resources :tags, only:[:index]
+    resources :emotionalities, only:[:new, :create,:update, :edit]
+    resources :extraversions, only:[:new, :create,:update, :edit]
+    resources :controllabilities, only:[:new, :create,:update, :edit]
+    resources :attachments, only:[:new, :create,:update, :edit]
+    resources :playabilities, only:[:new, :create,:update, :edit]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
