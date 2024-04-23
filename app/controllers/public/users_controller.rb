@@ -4,7 +4,8 @@ class Public::UsersController < PublicController
 
   def index
     if params[:search].present?
-      @users = User.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+      search_users = User.select { |user| user.name.include?(params[:search]) }
+      @users = Kaminari.paginate_array(search_users).page(params[:page])
       @heading = "「#{params[:search]}」の検索結果"
     else
       @users = User.page(params[:page])

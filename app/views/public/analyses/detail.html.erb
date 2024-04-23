@@ -19,7 +19,8 @@ $(document).ready(function(){
 
 <div class="container">
       <h2><%= @user.name %>さんの性格分析内訳</h2><br>
-      <h4>各項目10点満点　項目にマウスを合わせるとコメントが表示されます</h4>
+      <h4>各項目10点満点　項目説明にマウスを合わせるとコメントが表示されます</h4>
+      <h4>得点目安【高め→8点以上　低め→4点以下】</h4>
   <div class="row">
     <div class="col-6">
       <table class="table">
@@ -34,27 +35,27 @@ $(document).ready(function(){
           <tr>
             <th scope="row">心配性</th>
             <td><%= @emotionality1_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→心配症で起こるかもしれないことを色々心配しがち <br> 低い→穏やかで自信がある傾向がある">心配性な性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→心配症で起こるかもしれないことを色々心配しがち <br> 低め→穏やかで自信がある傾向がある">心配性な性質</td>
           </tr>
           <tr>
             <th scope="row">緊張</th>
             <td><%= @emotionality2_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→動揺しやすく、ストレスの多い状況に負けやすい <br> 低い→動揺しにくく、自信にあふれている">動揺して硬直してしまう性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→動揺しやすく、ストレスの多い状況に負けやすい <br> 低め→動揺しにくく、自信にあふれている">動揺して硬直してしまう性質</td>
           </tr>
           <tr>
             <th scope="row">抑うつ</th>
             <td><%= @emotionality3_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→悲観的でネガティブ思考になりやすい <br> 低い→ネガティブ思考になりにくく、自分に満足している">気分が抑制される、マイナス思考</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→悲観的でネガティブ思考になりやすい <br> 低め→ネガティブ思考になりにくく、自分に満足している">気分が抑制される、マイナス思考</td>
           </tr>
           <tr>
             <th scope="row">自己批判</th>
             <td><%= @emotionality4_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→自分の評価を下げがち <br> 低い→自分の評価を正当に見れる">他人より自己評価が低く感じる性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→自分の評価を下げがち <br> 低め→自分の評価を正当に見れる">他人より自己評価が低く感じる性質</td>
           </tr>
           <tr>
             <th scope="row">気分変動</th>
             <td><%= @emotionality5_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→物事が上手くいかないと感情が高ぶりやすい <br> 低い→浮き沈みはあまりなく、怒ることは少ない">気分の浮き沈みの激しさ</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→物事が上手くいかないと感情が高ぶりやすい <br> 低め→浮き沈みはあまりなく、怒ることは少ない">気分の浮き沈みの激しさ</td>
           </tr>
         </tbody>
       </table>
@@ -117,27 +118,27 @@ $(document).ready(function(){
           <tr>
             <th scope="row">活動</th>
             <td><%= @extraversion1_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→活動的でじっとしているのが苦手、お喋り好き <br> 低い→じっとできる、活動的ではなく、ゆったりしている方が好き">活動的な性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→活動的でじっとしているのが苦手、お喋り好き <br> 低め→じっとできる、活動的ではなく、ゆったりしている方が好き">活動的な性質</td>
           </tr>
           <tr>
             <th scope="row">支配</th>
             <td><%= @extraversion2_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→意見をはっきり述べ、グループを先導することに満足を覚える <br> 低い→他人に指示を出すのが苦手、支配欲がなく、話すより聞く方が好き">リーダーシップ・他人をコントロールしたい性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→意見をはっきり述べ、グループを先導することに満足を覚える <br> 低め→他人に指示を出すのが苦手、支配欲がなく、話すより聞く方が好き">リーダーシップ・他人をコントロールしたい性質</td>
           </tr>
           <tr>
             <th scope="row">群居</th>
             <td><%= @extraversion3_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→大勢での作業が好き、他人と一緒にいることを好む <br> 低い→大勢での作業が苦手、自分に時間を使いたいと感じる">みんなでワイワイする性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→大勢での作業が好き、他人と一緒にいることを好む <br> 低め→大勢での作業が苦手、自分に時間を使いたいと感じる">みんなでワイワイする性質</td>
           </tr>
           <tr>
             <th scope="row">興奮追及</th>
             <td><%= @extraversion4_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→リスクを負うことや興奮すること等で刺激を求め、競うことを好む <br> 低い→競うことが苦手、刺激を求めず穏やかで安全な事を好む">刺激が強い環境を好み、競争が好き</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→リスクを負うことや興奮すること等で刺激を求め、競うことを好む <br> 低め→競うことが苦手、刺激を求めず穏やかで安全な事を好む">刺激が強い環境を好み、競争が好き</td>
           </tr>
           <tr>
             <th scope="row">注意獲得</th>
             <td><%= @extraversion5_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→目立つことが好き、他人の目をとても気にする <br> 低い→目立つことが苦手、他人の目を気にしない">目立ったり他人に注目されたりする性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→目立つことが好き、他人の目をとても気にする <br> 低め→目立つことが苦手、他人の目を気にしない">目立ったり他人に注目されたりする性質</td>
           </tr>
         </tbody>
       </table>
@@ -200,27 +201,27 @@ $(document).ready(function(){
           <tr>
             <th scope="row">几帳面</th>
             <td><%= @controllability1_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→几帳面、整頓する <br> 低い→だらしない、乱雑">几帳面な性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→几帳面、整頓する <br> 低め→だらしない、乱雑">几帳面な性質</td>
           </tr>
           <tr>
             <th scope="row">執着</th>
             <td><%= @controllability2_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→きついことにも立ち向かってあきらめない <br> 低い→長期間、むずかしいことを続けられない">難しい事でも根気よく続ける性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→きついことにも立ち向かってあきらめない <br> 低め→長期間、むずかしいことを続けられない">難しい事でも根気よく続ける性質</td>
           </tr>
           <tr>
             <th scope="row">責任感</th>
             <td><%= @controllability3_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→約束や役割をしっかりこなす <br> 低い→約束を守れない、規則や義務は無視して、やりたいことをやる">約束を守り、決めたことを貫く性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→約束や役割をしっかりこなす <br> 低め→約束を守れない、規則や義務は無視して、やりたいことをやる">約束を守り、決めたことを貫く性質</td>
           </tr>
           <tr>
             <th scope="row">自己統制</th>
             <td><%= @controllability4_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→衝動的になりにくい <br> 低い→衝動的に行動してしまう">衝動や欲望に流されず、<br>感情をコントロールする性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→衝動的になりにくい <br> 低め→衝動的に行動してしまう">衝動や欲望に流されず、<br>感情をコントロールする性質</td>
           </tr>
           <tr>
             <th scope="row">計画</th>
             <td><%= @controllability5_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→計画性がある、注意深く考え抜く <br> 低い→計画性が無い、すぐに実行する">綿密なプランを立てる性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→計画性がある、注意深く考え抜く <br> 低め→計画性が無い、すぐに実行する">綿密なプランを立てる性質</td>
           </tr>
         </tbody>
       </table>
@@ -283,27 +284,27 @@ $(document).ready(function(){
           <tr>
             <th scope="row">温厚</th>
             <td><%= @attachment1_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→他人に優しい、助けることで充足感を得られる <br> 低い→他人に優しくない、他人より自分のことを優先したい">他人に優しくする性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→他人に優しい、助けることで充足感を得られる <br> 低め→他人に優しくない、他人より自分のことを優先したい">他人に優しくする性質</td>
           </tr>
           <tr>
             <th scope="row">協調</th>
             <td><%= @attachment2_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→周囲と合わせるのが得意、対立を避けようとする <br> 低い→周囲と合わせるのが苦手or合わせないため反論を避けない">周囲に誰かがいると気を遣う性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→周囲と合わせるのが得意、対立を避けようとする <br> 低め→周囲と合わせるのが苦手or合わせないため反論を避けない">周囲に誰かがいると気を遣う性質</td>
           </tr>
           <tr>
             <th scope="row">信頼</th>
             <td><%= @attachment3_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→人の善意を信じてすぐに仲良くなれる <br> 低い→他人を警戒し、すぐには仲良くなれない">他人をすぐに好きになり信用する性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→人の善意を信じてすぐに仲良くなれる <br> 低め→他人を警戒し、すぐには仲良くなれない">他人をすぐに好きになり信用する性質</td>
           </tr>
           <tr>
             <th scope="row">共感</th>
             <td><%= @attachment4_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→他人の感情や心情に共感でき、思いやりがある <br> 低い→他人の感情や心情に共感できず、自分自身で物事を考える">他人の感情を自分事のように感じる性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→他人の感情や心情に共感でき、思いやりがある <br> 低め→他人の感情や心情に共感できず、自分自身で物事を考える">他人の感情を自分事のように感じる性質</td>
           </tr>
           <tr>
             <th scope="row">他者尊重</th>
             <td><%= @attachment5_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→他人に平等な評価や関係を築ける <br> 低い→他人に平等な評価や関係を築けず、好き嫌いがある">他人を見下さず、平等に接する性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→他人に平等な評価や関係を築ける <br> 低め→他人に平等な評価や関係を築けず、好き嫌いがある">他人を見下さず、平等に接する性質</td>
           </tr>
         </tbody>
       </table>
@@ -366,27 +367,27 @@ $(document).ready(function(){
           <tr>
             <th scope="row">進取</th>
             <td><%= @playability1_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→進んで行動を起こせる <br> 低い→進んで行動を起こしにくい">自分から進んで物事をする性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→進んで行動を起こせる <br> 低め→進んで行動を起こしにくい">自分から進んで物事をする性質</td>
           </tr>
           <tr>
             <th scope="row">空想</th>
             <td><%= @playability2_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→想像力が高く、豊かな想像力を持っている <br> 低い→想像力が低く、想像よりも事実を優先する">頭の中での発想・イメージが活動的な性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→想像力が高く、豊かな想像力を持っている <br> 低め→想像力が低く、想像よりも事実を優先する">頭の中での発想・イメージが活動的な性質</td>
           </tr>
           <tr>
             <th scope="row">芸術への関心</th>
             <td><%= @playability3_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→芸術への関心が高く、美しいものが好きで、創造的経験を求めている <br> 低い→芸術への関心が低く、芸術的活動や創造的活動への興味が薄い">芸術への関心がある性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→芸術への関心が高く、美しいものが好きで、創造的経験を求めている <br> 低め→芸術への関心が低く、芸術的活動や創造的活動への興味が薄い">芸術への関心がある性質</td>
           </tr>
           <tr>
             <th scope="row">内向経験への敏感</th>
             <td><%= @playability4_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→自分の感情を自覚していて、感情の表し方を知っている <br> 低い→自分の感情について考えたり、感情を表に出すことがあまりない">自分への関心や感情が高い性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→自分の感情を自覚していて、感情の表し方を知っている <br> 低め→自分の感情について考えたり、感情を表に出すことがあまりない">自分への関心や感情が高い性質</td>
           </tr>
           <tr>
             <th scope="row">奔放</th>
             <td><%= @playability5_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高い→規則を無視してでも挑戦したいという欲求が強い <br> 低い→規則や伝統に従って安定を維持することを好む">ルールを無視し、<br>自分の思うままに行動する性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→規則を無視してでも挑戦したいという欲求が強い <br> 低め→規則や伝統に従って安定を維持することを好む">ルールを無視し、<br>自分の思うままに行動する性質</td>
           </tr>
         </tbody>
       </table>

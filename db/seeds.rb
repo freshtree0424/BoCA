@@ -21,11 +21,43 @@ Admin.create!(
 initial_users = [
   {
     name: "一ノ瀬洋子",
-    introduction: "心理戦や考える系が好き"
+    introduction: "ファンタジーが特に好き"
   },
   {
     name: "二階堂啓介",
-    introduction: "アクション系好き"
+    introduction: "アクション系が好き"
+  },
+  {
+    name: "三浦健太",
+    introduction: "ミステリーが好き"
+  },
+  {
+    name: "四谷葵",
+    introduction: "ロマンス系好き"
+  },
+  {
+    name: "五条咲夜",
+    introduction: "歴史関係が好き"
+  },
+  {
+    name: "六本木裕太",
+    introduction: "ホラー系好き"
+  },
+  {
+    name: "七海美咲",
+    introduction: "コメディが好き"
+  },
+  {
+    name: "八幡哲也",
+    introduction: "ドラマ系好き"
+  },
+  {
+    name: "九条華",
+    introduction: "心理戦や考える系が好き"
+  },
+  {
+    name: "十森蓮",
+    introduction: "SFが好き"
   },
 ]
 initial_users.each.with_index(1) do |user, i|
@@ -39,24 +71,59 @@ end
 initial_posts = [
   {
     user_id: 1,
-    title: "シンフォニー",
-    body: "基本は頭脳戦で陰謀と策略が渦巻く中、魅力的なキャラのアクション表現が良かった！",
+    title: "魔法の書と失われた王国",
+    body: "魔法の力と冒険が織りなすファンタジーの物語です。主人公は失われた王国の謎を解き明かすため、魔法の書を求めて危険な旅に出ます。著者は魔法の世界をリアルに描写し、読者を魅了します。予測不能な展開と緊張感が持続する一冊です。",
     score: 4,
-    created_at: "2024/04/14 14:21:34"
+    created_at: "2024/04/12 14:21:34"
   },
   {
     user_id: 2,
-    title: "Paradise",
-    body: "流行のタイトルを購入。タイトル回収が凄かった。",
+    title: "機械の騎士と銀河の戦士",
+    body: "未来の銀河を舞台にしたスチームパンクの冒険物語です。主人公は機械の騎士として、銀河の平和を守るために戦います。著者はスチームパンクの世界観を緻密に構築し、読者を没入させます。アクションと人間ドラマが絶妙に絡み合った一冊です。",
     score: 5,
     created_at: "2024/04/15 15:43:52"
   },
   {
-    user_id: 3,
-    title: "夏祭りの始まり",
-    body: "BoCA大賞ノミネート作品！感動作で泣けました！",
+    user_id: 1,
+    title: "宇宙の詩人",
+    body: "宇宙を詩的な視点から描いた作品です。主人公は宇宙船の船長として星々の間を旅し、その経験を詩に綴ります。著者は宇宙の壮大さと神秘性を美しい言葉で表現し、読者を感動させます。宇宙の奥深さと人間の情熱が交錯する感動的な物語です。",
     score: 5,
     created_at: "2024/04/16 17:42:09"
+  },
+  {
+    user_id: 1,
+    title: "星の舞踏会",
+    body: " この本は、宇宙船の乗組員たちが未知の惑星で行われる神秘的な舞踏会に招かれる物語です。著者は宇宙の無限の可能性を描きながら、人間の心の複雑さと探求心を探求します。キャラクターの心情描写が深く、読み手を物語の世界に引き込みます。",
+    score: 4,
+    created_at: "2024/04/17 14:21:34"
+  },
+  {
+    user_id: 1,
+    title: "時の迷宮",
+    body: "この小説は、時間旅行を巡る驚くべき冒険を描いています。主人公は時間の迷宮に迷い込み、過去と未来の間を行き来しながら自身の運命を模索します。著者は時間の謎を巧みに操り、読者を非常に惹きつけます。絶え間ないサスペンスと驚きが詰まった一冊です。",
+    score: 5,
+    created_at: "2024/04/18 13:43:52"
+  },
+  {
+    user_id: 1,
+    title: "銀河の謎",
+    body: "宇宙を舞台にした壮大なミステリーです。銀河系の彼方にある謎の惑星を舞台に、探検家たちが奇妙な現象と対峙します。著者は惑星の秘密を徐々に明らかにしながら、読者に興奮と興味を与えます。想像力を刺激し、深い哲学的なテーマを探求した一冊です。",
+    score: 5,
+    created_at: "2024/04/19 16:02:09"
+  },
+  {
+    user_id: 1,
+    title: "夢幻の林檎",
+    body: "魔法と冒険が溢れる幻想的な世界を描いています。主人公は不思議な林檎を手に入れ、それが彼の人生に及ぼす影響を追求します。著者は豊かな描写とキャラクターの成長を通じて、読者を魅了します。ファンタジーの魅力と心温まる物語が絶妙に組み合わさった作品です。",
+    score: 4,
+    created_at: "2024/04/20 17:21:34"
+  },
+  {
+    user_id: 2,
+    title: "未知なる深淵",
+    body: "海底に広がる未知の領域を舞台にしたスリリングな冒険を描いています。主人公は深海探査に参加し、そこで遭遇する驚異的な生物や未解明の現象に直面します。著者は読者を海の底の神秘的な世界に引き込みながら、科学と冒険の融合を楽しませます。",
+    score: 5,
+    created_at: "2024/04/21 18:43:52"
   },
 ]
 Post.create(initial_posts)
@@ -64,22 +131,19 @@ Post.create(initial_posts)
 #タグ
 initial_tags = [
   {
-    name: "アクション",
-  },
-  {
-    name: "頭脳戦",
-  },
-  {
-    name: "SF",
-  },
-  {
     name: "ファンタジー",
   },
   {
-    name: "感動",
+    name: "ミステリー",
   },
   {
-    name: "ノミネート",
+    name: "アクション",
+  },
+  {
+    name: "ドラマ",
+  },
+  {
+    name: "感動",
   },
 ]
 Tag.create(initial_tags)
@@ -108,7 +172,7 @@ initial_tag_relationships = [
     post_id: 3,
   },
   {
-    tag_id: 6,
+    tag_id: 1,
     post_id: 3,
   },
 ]
@@ -148,52 +212,42 @@ Category.create(initial_categories)
 #Emテーブル
 initial_emotionalities = [
   {
-#    emotionality_id: 1,
     category_id: 1,
     question: "小さなことにはくよくよしない"
   },
   {
-#    emotionality_id: 2,
     category_id: 1,
     question: "ものごとがうまく行かないのではないかと，よく心配する"
   },
   {
-#    emotionality_id: 3,
     category_id: 2,
     question: "緊張してふるえるようなことはない"
   },
   {
-#    emotionality_id: 4,
     category_id: 2,
     question: "よく緊張する"
   },
   {
-#    emotionality_id: 5,
     category_id: 3,
     question: "見捨てられた感じがする"
   },
   {
-#    emotionality_id: 6,
     category_id: 3,
     question: "憂鬱になりやすい"
   },
   {
-#    emotionality_id: 7,
     category_id: 4,
     question: "自分がみじめな人間に思える"
   },
   {
-#    emotionality_id: 8,
     category_id: 4,
     question: "自分には全然価値がないように思えることがある"
   },
   {
-#    emotionality_id: 9,
     category_id: 5,
     question: "陽気になったり陰気になったり，気分が変りやすい"
   },
   {
-#    emotionality_id: 10,
     category_id: 5,
     question: "明るいときと暗いときの気分の差が大きい"
   },
@@ -203,52 +257,42 @@ Emotionality.create(initial_emotionalities)
 #Exテーブル
 initial_extraversions = [
   {
-#    extraversion_id: 1,
     category_id: 6,
     question: "もの静かである"
   },
   {
-#    extraversion_id: 2,
     category_id: 6,
     question: "じっとしているのが嫌いである"
   },
   {
-#   extraversion_id: 3,
     category_id: 7,
     question: "人の上に立つことが多い"
   },
   {
-#    extraversion_id: 4,
     category_id: 7,
     question: "人に指示を与えるような立場に立つことが多い"
   },
   {
-#   extraversion_id: 5,
     category_id: 8,
     question: "大勢でわいわい騒ぐのが好きである"
   },
   {
-#    extraversion_id: 6,
     category_id: 8,
     question: "大勢の人の中にいるのが好きである"
   },
   {
-#    extraversion_id: 7,
     category_id: 9,
     question: "スポーツ観戦で我を忘れて応援することがある"
   },
   {
-#    extraversion_id: 8,
     category_id: 9,
     question: "にぎやかな所が好きである"
   },
   {
-#    extraversion_id: 9,
     category_id: 10,
     question: "人から注目されるとうれしい"
   },
   {
- #   extraversion_id: 10,
     category_id: 10,
     question: "地味で目立つことはない"
   },
@@ -258,52 +302,42 @@ Extraversion.create(initial_extraversions)
 #Cテーブル
 initial_controllabilities = [
   {
-#    controllability_id: 1,
     category_id: 11,
     question: "あまりきっちりした人間ではない"
   },
   {
-#    controllability_id: 2,
     category_id: 11,
     question: "几帳面である"
   },
   {
-#    controllability_id: 3,
     category_id: 12,
     question: "根気が続かないほうである"
   },
   {
-#    controllability_id: 4,
     category_id: 12,
     question: "まじめな努力家である"
   },
   {
-#    controllability_id: 5,
     category_id: 13,
     question: "責任感が乏しいといわれることがある"
   },
   {
-#    controllability_id: 6,
     category_id: 13,
     question: "仕事を投げやりにしてしまうことがある"
   },
   {
-#    controllability_id: 7,
     category_id: 14,
     question: "欲望のままに行動してしまうようなことは，ほとんどない"
   },
   {
- #   controllability_id: 8,
     category_id: 14,
     question: "しんどいことはやりたくない"
   },
   {
-#    controllability_id: 9,
     category_id: 15,
     question: "よく考えてから行動する"
   },
   {
-#    controllability_id: 10,
     category_id: 15,
     question: "仕事は計画的にするようにしている"
   },
@@ -313,52 +347,42 @@ Controllability.create(initial_controllabilities)
 #Aテーブル
 initial_attachments = [
   {
-#    attachment_id: 1,
     category_id: 16,
     question: "人には暖かく友好的に接している"
   },
   {
-#    attachment_id: 2,
     category_id: 16,
     question: "あまり親切な人間ではない"
   },
   {
-#    attachment_id: 3,
     category_id: 17,
     question: "人情深いほうだと思う"
   },
   {
-#    attachment_id: 4,
     category_id: 17,
     question: "気配りをするほうである"
   },
   {
-#    attachment_id: 5,
     category_id: 18,
     question: "出会った人はたいがい好きになる"
   },
   {
-#    attachment_id: 6,
     category_id: 18,
     question: "どうしても好きになれない人がたくさんいる"
   },
   {
-#    attachment_id: 7,
     category_id: 19,
     question: "人のよろこびを自分のことのように喜べる"
   },
   {
-#    attachment_id: 8,
     category_id: 19,
     question: "人の気持ちを積極的に理解しようとは思わない"
   },
   {
-#    attachment_id: 9,
     category_id: 20,
     question: "誰に対しても優しく親切にふるまうようにしている"
   },
   {
-#    attachment_id: 10,
     category_id: 20,
     question: "人を馬鹿にしているといわれることがある"
   },
@@ -368,52 +392,42 @@ Attachment.create(initial_attachments)
 #Pテーブル
 initial_playabilities = [
   {
-#    playability_id: 1,
     category_id: 21,
     question: "考えることは面白い"
   },
   {
-#    playability_id: 2,
     category_id: 21,
     question: "好奇心が強い"
   },
   {
-#    playability_id: 3,
     category_id: 22,
     question: "イメージがあふれ出てくる"
   },
   {
-#    playability_id: 4,
     category_id: 22,
     question: "空想の世界をさまようことはほとんどない"
   },
   {
-#    playability_id: 5,
     category_id: 23,
     question: "美や芸術にはあまり関心がない"
   },
   {
-#    playability_id: 6,
     category_id: 23,
     question: "芸術作品に接すると鳥肌がたち興奮をおぼえることがある"
   },
   {
-#    playability_id: 7,
     category_id: 24,
     question: "自分の感じたことを大切にする"
   },
   {
-#    playability_id: 8,
     category_id: 24,
     question: "感情豊かな人間である"
   },
   {
-#    playability_id: 9,
     category_id: 25,
     question: "変わった人だとよくいわれる"
   },
   {
-#    playability_id: 10,
     category_id: 25,
     question: "別世界に行ってみたい"
   },
@@ -425,7 +439,7 @@ initial_emotionality_answers = [
   {
     user_id: 1,
     emotionality_id: 1,
-    answer: 4
+    answer: 2
   },
   {
     user_id: 1,
@@ -535,7 +549,7 @@ initial_controllability_answers = [
   {
     user_id: 1,
     controllability_id: 1,
-    answer: 2
+    answer: 4
   },
   {
     user_id: 1,
@@ -555,12 +569,12 @@ initial_controllability_answers = [
   {
     user_id: 1,
     controllability_id: 5,
-    answer: 1
+    answer: 5
   },
   {
     user_id: 1,
     controllability_id: 6,
-    answer: 1
+    answer: 5
   },
   {
     user_id: 1,
@@ -595,7 +609,7 @@ initial_attachment_answers = [
   {
     user_id: 1,
     attachment_id: 2,
-    answer: 2
+    answer: 4
   },
   {
     user_id: 1,
@@ -625,7 +639,7 @@ initial_attachment_answers = [
   {
     user_id: 1,
     attachment_id: 8,
-    answer: 2
+    answer: 4
   },
   {
     user_id: 1,
@@ -635,7 +649,7 @@ initial_attachment_answers = [
   {
     user_id: 1,
     attachment_id: 10,
-    answer: 2
+    answer: 4
   },
 ]
 AttachmentAnswer.create(initial_attachment_answers)
@@ -660,12 +674,12 @@ initial_playability_answers = [
   {
     user_id: 1,
     playability_id: 4,
-    answer: 1
+    answer: 5
   },
   {
     user_id: 1,
     playability_id: 5,
-    answer: 1
+    answer: 5
   },
   {
     user_id: 1,

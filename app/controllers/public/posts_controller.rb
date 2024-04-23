@@ -8,7 +8,8 @@ class Public::PostsController < PublicController
 
   def index
     if params[:search].present?
-      @posts = Post.where("title LIKE ?", "%#{params[:search]}%") if params[:search].present?
+      search_posts = Post.select { |post| post.title.include?(params[:search]) }
+      @posts = Kaminari.paginate_array(search_posts).page(params[:page])      
       @heading = "「#{params[:search]}」の検索結果"
     else
       @posts = Post.all.order(created_at: :desc).page(params[:page])
@@ -58,7 +59,7 @@ class Public::PostsController < PublicController
      redirect_to posts_path(@post.id)
    else
      @user = current_user
-     @posts = Post.all
+     @posts = Post.all.page(params[:page])
      render :new
    end
   end
@@ -99,7 +100,7 @@ class Public::PostsController < PublicController
         redirect_to root_path
         return
       end
-      @posts = @tag.posts
+      @posts = @tag.posts.page(params[:page])
     else
       @tag_list = Tag.all
     end

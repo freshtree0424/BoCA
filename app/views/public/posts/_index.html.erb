@@ -17,7 +17,7 @@
         <td><%= l post.created_at %></td>
         <td><%= image_tag post.user.get_profile_image, size: '50x50' %></td>
         <td><%= link_to post.title, post_path(post.id) %></td>
-        <td><%= post.body %></td>
+        <td><%= post.body.truncate(20) %></td>
         <td><% tag_lists[post.id].split(',').each do |tag_name| %>
               <i class="fa-solid fa-tag"></i><%= link_to tag_name, search_tag_path(tag_name: tag_name) %>
             <% end %>
