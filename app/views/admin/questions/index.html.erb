@@ -1,7 +1,7 @@
 <div class="container">
   <h2>質問一覧</h2>
-  <%= link_to '質問作成', admin_questions_select_path, class: "btn btn-sm btn-success" %>
-  <%= link_to 'カテゴリー一覧',  admin_categories_path, class: "btn btn-sm btn-success" %>
+   <%= render 'admin/questions/link' %>
+   <%= render 'admin/questions/model_tab' %>
   <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
     <table class="table">
       <thead>
@@ -19,6 +19,8 @@
           <td>神経症傾向</td>
           <td><%= emotionality.category.name %></td>
           <td><%= emotionality.question %></td>
+          <td><%= link_to '編集', edit_admin_emotionality_path(emotionality), class: 'btn btn-success' %></td>
+          <td><%= link_to '削除', admin_emotionality_path(emotionality), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
         <% end %>
         <% @extraversions.each do |extraversion| %>
@@ -27,6 +29,8 @@
           <td>外向性</td>
           <td><%= extraversion.category.name %></td>
           <td><%= extraversion.question %></td>
+          <td><%= link_to '編集', edit_admin_extraversion_path(extraversion), class: 'btn btn-success' %></td>
+          <td><%= link_to '削除', admin_extraversion_path(extraversion), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
         <% end %>
         <% @controllabilities.each do |controllability| %>
@@ -35,6 +39,8 @@
           <td>誠実性</td>
           <td><%= controllability.category.name %></td>
           <td><%= controllability.question %></td>
+          <td><%= link_to '編集', edit_admin_controllability_path(controllability), class: 'btn btn-success' %></td>
+          <td><%= link_to '削除', admin_controllability_path(controllability), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
         <% end %>
         <% @attachments.each do |attachment| %>
@@ -43,6 +49,8 @@
           <td>調和性</td>
           <td><%= attachment.category.name %></td>
           <td><%= attachment.question %></td>
+          <td><%= link_to '編集', edit_admin_attachment_path(attachment), class: 'btn btn-success' %></td>
+          <td><%= link_to '削除', admin_attachment_path(attachment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
         <% end %>
         <% @playabilities.each do |playability| %>
@@ -51,6 +59,8 @@
           <td>開放性</td>
           <td><%= playability.category.name %></td>
           <td><%= playability.question %></td>
+          <td><%= link_to '編集', edit_admin_playability_path(playability), class: 'btn btn-success' %></td>
+          <td><%= link_to '削除', admin_playability_path(playability), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
         <% end %>
       </tbody>
