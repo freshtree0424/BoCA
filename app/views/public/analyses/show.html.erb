@@ -1,0 +1,72 @@
+<div class="container">
+  <h2><%= @user.name %>さんの性格分析</h2>
+  <div class="row">
+    <div class="col-6">
+      <%= render 'public/analyses/radarchart',user: @user, emotionality_total_score: @emotionality_total_score,extraversion_total_score: @extraversion_total_score,controllability_total_score: @controllability_total_score, attachment_total_score: @attachment_total_score, playability_total_score: @playability_total_score %>
+    </div>
+    <div class="col-6">
+      <p><%= @emotionality_grade %></p>
+      <p><%= @extraversion_grade %></p>
+      <p><%= @controllability_grade %></p>
+      <p><%= @attachment_grade %></p>
+      <p><%= @playability_grade %></p>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
+    <div class="col-auto">
+      <table class="table">
+  <thead>
+    <tr align="center">
+      <th scope="col"></th>
+      <th scope="col">項目説明</th>
+      <th scope="col">高い</th>
+      <th scope="col">中間</th>
+      <th scope="col">低い</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">神経症傾向</th>
+      <td>メンタルの強さ<br>感受性の高さ</td>
+      <td>メンタルが敏感<br>多少のことで焦ったりする</td>
+      <td>メンタルは普通<br>崩れる時もあれば崩れない時もある</td>
+      <td>メンタルが強い<br>多少のことで焦ったりしない</td>
+    </tr>
+    <tr>
+      <th scope="row">外向性</th>
+      <td>明るく積極的に<br>他人と関わる性質</td>
+      <td>活動的、温かい</td>
+      <td>適度に外向的で適度に内向的<br>どちらの性格も併せ持つ</td>
+      <td>他人と関わることが苦手で内向的</td>
+    </tr>
+    <tr>
+      <th scope="row">誠実性</th>
+      <td>コツコツと<br>やり遂げる力</td>
+      <td>つらい仕事でも淡々と行える</td>
+      <td>コツコツ続けられることもあれば<br>衝動的になることもある</td>
+      <td>衝動的に行動する<br>予定を先延ばしにする</td>
+    </tr>
+    <tr>
+      <th scope="row">調和性</th>
+      <td>他人への親切さ</td>
+      <td>他人に親切</td>
+      <td>親切なこともあるが<br>好き嫌いがあることもある</td>
+      <td>他人への親切心があまりない<br>交渉が得意なケースもある</td>
+    </tr>
+    <tr>
+      <th scope="row">開放性</th>
+      <td>好奇心の強さ<br>(芸術面を含む)</td>
+      <td>知的好奇心が高い<br>新しい事をすることに<br>ためらいが無い</td>
+      <td>好奇心は高いがルールは守りたい<br>両方の性質を併せ持つ</td>
+      <td>新しい事を好まない<br>決まったルールや規則を守りたい</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-3">
+      <%= link_to "内訳を見る", analysis_detail_path(@user), class: "btn btn-info btn-lg btn-block" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<%= form_with(model: controllability, url: (controllability.persisted? ? admin_controllability_path(controllability) : admin_controllabilities_path), local: true) do |f| %>
+  <table class='table'>
+    <tr>
+      <th>項目</th>
+  	  <td>誠実性</td>
+    </tr>
+    <tr>
+      <th>カテゴリー</th>
+      <td><%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: 'form-control'} %></td>
+    </tr>
+    <tr>
+      <th>質問</th>
+      <td><%= f.text_field :question, class: "form-control question" %></td>
+    </tr>
+    <tr align="center">
+      <th>
+        <% if controllability.persisted? %>
+          <%= f.submit "更新する", class: "btn btn-success" %>
+        <% else %>
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+        <% end %>
+      </th>
+    </tr>
+ </table>
+<% end %>

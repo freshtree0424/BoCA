@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_13_035725) do
+ActiveRecord::Schema.define(version: 2024_04_17_033311) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,102 @@ ActiveRecord::Schema.define(version: 2024_04_13_035725) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "attachment_answers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "attachment_id", null: false
+    t.integer "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["attachment_id"], name: "index_attachment_answers_on_attachment_id"
+    t.index ["user_id"], name: "index_attachment_answers_on_user_id"
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "question"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_attachments_on_category_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "controllabilities", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "question"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_controllabilities_on_category_id"
+  end
+
+  create_table "controllability_answers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "controllability_id", null: false
+    t.integer "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["controllability_id"], name: "index_controllability_answers_on_controllability_id"
+    t.index ["user_id"], name: "index_controllability_answers_on_user_id"
+  end
+
+  create_table "emotionalities", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "question"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_emotionalities_on_category_id"
+  end
+
+  create_table "emotionality_answers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "emotionality_id", null: false
+    t.integer "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["emotionality_id"], name: "index_emotionality_answers_on_emotionality_id"
+    t.index ["user_id"], name: "index_emotionality_answers_on_user_id"
+  end
+
+  create_table "extraversion_answers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "extraversion_id", null: false
+    t.integer "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["extraversion_id"], name: "index_extraversion_answers_on_extraversion_id"
+    t.index ["user_id"], name: "index_extraversion_answers_on_user_id"
+  end
+
+  create_table "extraversions", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "question"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_extraversions_on_category_id"
+  end
+
+  create_table "playabilities", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "question"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_playabilities_on_category_id"
+  end
+
+  create_table "playability_answers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "playability_id", null: false
+    t.integer "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["playability_id"], name: "index_playability_answers_on_playability_id"
+    t.index ["user_id"], name: "index_playability_answers_on_user_id"
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -109,6 +205,21 @@ ActiveRecord::Schema.define(version: 2024_04_13_035725) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attachment_answers", "attachments"
+  add_foreign_key "attachment_answers", "users"
+  add_foreign_key "attachments", "categories"
+  add_foreign_key "controllabilities", "categories"
+  add_foreign_key "controllability_answers", "controllabilities"
+  add_foreign_key "controllability_answers", "users"
+  add_foreign_key "emotionalities", "categories"
+  add_foreign_key "emotionality_answers", "emotionalities"
+  add_foreign_key "emotionality_answers", "users"
+  add_foreign_key "extraversion_answers", "extraversions"
+  add_foreign_key "extraversion_answers", "users"
+  add_foreign_key "extraversions", "categories"
+  add_foreign_key "playabilities", "categories"
+  add_foreign_key "playability_answers", "playabilities"
+  add_foreign_key "playability_answers", "users"
   add_foreign_key "tag_relationships", "posts"
   add_foreign_key "tag_relationships", "tags"
   add_foreign_key "view_counts", "posts"

@@ -1,0 +1,65 @@
+<style>
+  table {
+    table-layout: fixed;
+    width: 100%; /* テーブルの幅を100%に設定 */
+  }
+  th {
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+  }
+  th:first-child {
+    width: 40%; /* 質問項目の幅を40%に設定 */
+  }
+  th:not(:first-child) {
+    width: calc(60% / 5); /* 残りの5項目を等分して設定 */
+  }
+  td {
+    padding: 20px;
+    text-align: center;
+  }
+  td input[type="radio"] {
+    width: 40px;
+    height: 40px;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <h2>素直な気持ちでお答えください</h2>
+  </div>
+  <div class="row">
+  <%= form_with model: @playability, url: playabilities_path, method: :post do |f| %>
+    <table>
+      <thead>
+        <tr>
+          <th>質問項目</th>
+          <th>全く違う</th>
+          <th>違う</th>
+          <th>どちらでもない</th>
+          <th>そうだ</th>
+          <th>全くそうだ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%#each_with_indexメソッドでボタンにindexを適用させる%>
+        <% @playabilities.each_with_index do |playability, index| %>
+        <%= f.hidden_field "#{playability.id}", value: 0 %>
+        <tr>
+          <td><%= playability.question %></td>
+                    <%#ボタンの名前%><%#ボタンの値%><%#@answerで指定された(適用させた)indexと:answer(カラム)がdigメソッドで'1'かどうかをtrue(チェック有),nil(空欄)で返す%>
+          <td><%= f.radio_button playability.id, 1, checked: @answers.dig(index, :answer) == 1 %></td>
+          <td><%= f.radio_button playability.id, 2, checked: @answers.dig(index, :answer) == 2 %></td>
+          <td><%= f.radio_button playability.id, 3, checked: @answers.dig(index, :answer) == 3 %></td>
+          <td><%= f.radio_button playability.id, 4, checked: @answers.dig(index, :answer) == 4 %></td>
+          <td><%= f.radio_button playability.id, 5, checked: @answers.dig(index, :answer) == 5 %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+      <div align="center">
+        <%= f.submit "次へ", class: "btn btn-success" %>
+      </div>
+  <% end %>
+  </div>
+</div>

@@ -66,3 +66,6 @@ gem 'devise'
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+#ページネーションのgem
+gem 'kaminari','~> 1.2.1'

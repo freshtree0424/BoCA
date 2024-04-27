@@ -1,0 +1,68 @@
+<style>
+  table {
+    table-layout: fixed;
+    width: 100%; /* テーブルの幅を100%に設定 */
+  }
+  th {
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+  }
+  th:first-child {
+    width: 40%; /* 質問項目の幅を40%に設定 */
+  }
+  th:not(:first-child) {
+    width: calc(60% / 5); /* 残りの5項目を等分して設定 */
+  }
+  td {
+    padding: 20px;
+    text-align: center;
+  }
+  td input[type="radio"] {
+    width: 40px;
+    height: 40px;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <h2>素直な気持ちでお答えください</h2>
+  </div>
+  <div class="row">
+  <%= form_with model: @emotionality, url: emotionalities_path, method: :post do |f| %>
+    <table>
+      <thead>
+        <tr>
+          <th>質問項目</th>
+          <th>全く違う</th>
+          <th>違う</th>
+          <th>どちらでもない</th>
+          <th>そうだ</th>
+          <th>全くそうだ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%#each_with_indexメソッドでボタンにindexを適用させる%>
+        <% @emotionalities.each_with_index do |emotionality, index| %>
+        <%= f.hidden_field "#{emotionality.id}", value: 0 %>
+        <tr>
+          <td><%= emotionality.question %></td>
+                              <%#ボタンの名前%><%#ボタンの値%><%#@answers[index]が存在するか%><%#:answerが1か確認%><%#trueかfalseを返す%>
+          <td><%= f.radio_button emotionality.id, 1, checked: !@answers[index].nil? && @answers[index][:answer] == 1 ? true : false %></td>
+          <td><%= f.radio_button emotionality.id, 2, checked: !@answers[index].nil? && @answers[index][:answer] == 2 ? true : false %></td>
+          <td><%= f.radio_button emotionality.id, 3, checked: !@answers[index].nil? && @answers[index][:answer] == 3 ? true : false %></td>
+          <td><%= f.radio_button emotionality.id, 4, checked: !@answers[index].nil? && @answers[index][:answer] == 4 ? true : false %></td>
+          <td><%= f.radio_button emotionality.id, 5, checked: !@answers[index].nil? && @answers[index][:answer] == 5 ? true : false %></td>
+        <%#[]の中身が1-5で存在する→trueを返してチェックがつく(checked)、[]の中身が存在しない→falseを返して空欄%>
+        <%#新規の場合は値がないので空欄、エラーではじかれて戻ってきた場合やupdateの場合は値があるのでチェックが付く%>
+        <%#   f.radio_button emotionality.id, 1, checked: @answers.dig(index, :answer) == 1   でも可%>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+      <div align="center">
+        <%= f.submit "次へ", class: "btn btn-success" %>
+      </div>
+  <% end %>
+  </div>
+</div>

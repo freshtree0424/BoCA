@@ -3,10 +3,12 @@
     <tr>
       <th>投稿時間</th>
       <th></th>
-      <th = style="font-size: 15pt">本のタイトル</th>
-      <th = style="font-size: 15pt">感想</th>
-      <th = style="font-size: 15pt">タグ</th>
-      <th = style="font-size: 15pt">スコア</th>
+      <th>本のタイトル</th>
+      <th>感想</th>
+      <th>タグ</th>
+      <th>スコア</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -15,15 +17,18 @@
         <td><%= l post.created_at %></td>
         <td><%= image_tag post.user.get_profile_image, size: '50x50' %></td>
         <td><%= link_to post.title, post_path(post.id) %></td>
-        <td><%= post.body %></td>
+        <td><%= post.body.truncate(20) %></td>
         <td><% tag_lists[post.id].split(',').each do |tag_name| %>
               <i class="fa-solid fa-tag"></i><%= link_to tag_name, search_tag_path(tag_name: tag_name) %>
             <% end %>
         </td>
         <td><%= render "public/posts/static_rate", post: post %></td>
-        <td><%= "#{post.post_comments.count} コメント" %></td>
-        <td>閲覧数: <%= post.view_counts.count %></td>
+        <td><i class="fa-solid fa-comment-dots"></i><%= "#{post.post_comments.count}" %></td>
+        <td><i class="fa-solid fa-eye"></i><%= post.view_counts.count %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<div class="d-flex justify-content-center">
+  <%= paginate posts %>
+</div>

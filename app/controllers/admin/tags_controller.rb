@@ -1,12 +1,13 @@
 class Admin::TagsController < AdminController
-  
+  before_action :authenticate_admin!
+
   def index
     if params[:search].present?
       @tags = Tag.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
-      @posts = Post.joins(:tags).where(tags: { id: @tags }).distinct
+      @posts = Post.joins(:tags).where(tags: { id: @tags }).distinct.page(params[:page])
       @heading = "「#{params[:search]}」の検索結果"
     else
-      @posts = Post.all.order(created_at: :asc)
+      @posts = Post.all.order(created_at: :asc).page(params[:page])
       @heading = "投稿一覧"
     end
     @tag_lists = {}

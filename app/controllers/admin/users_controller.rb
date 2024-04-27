@@ -1,11 +1,13 @@
 class Admin::UsersController < AdminController
+  before_action :authenticate_admin!
 
   def index
     if params[:search].present?
-       @users = User.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+       search_users = User.select { |user| user.name.include?(params[:search]) }
+       @users = Kaminari.paginate_array(search_users).page(params[:page])
        @heading = "「#{params[:search]}」の検索結果"
     else
-       @users = User.all
+       @users = User.all.page(params[:page])
        @heading = "会員一覧"
     end
   end
@@ -17,7 +19,7 @@ class Admin::UsersController < AdminController
       redirect_to admin_root_path
       return
     end
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page])
     @post = Post.new
     @tag_lists = {}
     @posts.each do |post|

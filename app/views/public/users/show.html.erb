@@ -21,8 +21,16 @@
        <%= @user.introduction %>
       </div>
     </div>
-    <div class="row">
+    <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
       <%= render 'public/posts/index',posts: @posts, tag_lists: @tag_lists %>
+    </div>
 
+    <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
+      <div class="col-8">
+        <%= render 'public/analyses/radarchart',user: @user, emotionality_total_score: @emotionality_total_score,extraversion_total_score: @extraversion_total_score,controllability_total_score: @controllability_total_score, attachment_total_score: @attachment_total_score, playability_total_score: @playability_total_score %>
+      </div>
+      <div class="col-4 d-flex align-items-center">
+        <%= link_to '詳細はこちら', analysis_path(@user.id), class: "btn btn-sm btn-info",style: "width: 300px; height: 80px; font-size: 30px;padding:15px;" %>
+      </div>
     </div>
 </div>
