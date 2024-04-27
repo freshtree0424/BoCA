@@ -47,12 +47,11 @@
         <%= f.hidden_field "#{controllability.id}", value: 0 %>
         <tr>
           <td><%= controllability.question %></td>
-                    <%#ボタンの名前%><%#ボタンの値%><%#@answerで指定された(適用させた)indexと:answer(カラム)がdigメソッドで'1'かどうかをtrue(チェック有),nil(空欄)で返す%>
-          <td><%= f.radio_button controllability.id, 1, checked: @answers.dig(index, :answer) == 1 %></td>
-          <td><%= f.radio_button controllability.id, 2, checked: @answers.dig(index, :answer) == 2 %></td>
-          <td><%= f.radio_button controllability.id, 3, checked: @answers.dig(index, :answer) == 3 %></td>
-          <td><%= f.radio_button controllability.id, 4, checked: @answers.dig(index, :answer) == 4 %></td>
-          <td><%= f.radio_button controllability.id, 5, checked: @answers.dig(index, :answer) == 5 %></td>
+          <td><%= f.radio_button controllability.id, 1, checked: !@answers[index].nil? && @answers[index][:answer] == 1 ? true : false %></td>
+          <td><%= f.radio_button controllability.id, 2, checked: !@answers[index].nil? && @answers[index][:answer] == 2 ? true : false %></td>
+          <td><%= f.radio_button controllability.id, 3, checked: !@answers[index].nil? && @answers[index][:answer] == 3 ? true : false %></td>
+          <td><%= f.radio_button controllability.id, 4, checked: !@answers[index].nil? && @answers[index][:answer] == 4 ? true : false %></td>
+          <td><%= f.radio_button controllability.id, 5, checked: !@answers[index].nil? && @answers[index][:answer] == 5 ? true : false %></td>
         </tr>
         <% end %>
         </tbody>
