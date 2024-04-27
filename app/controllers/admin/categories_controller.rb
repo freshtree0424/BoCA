@@ -15,7 +15,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.save
       redirect_to admin_categories_path
     else
-      @categories = Category.all
+      @categories = Category.all.page(params[:page]).per(10)
       render :index
     end
   end
@@ -26,6 +26,17 @@ class Admin::CategoriesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    category = Category.find_by(id: params[:id])
+    #存在しないIDを検索したらトップへ遷移
+    if category.nil?
+      redirect_to admin_root_path
+      return
+    end
+    category.destroy
+    redirect_to admin_categories_path
   end
 
   private

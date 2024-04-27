@@ -27,7 +27,9 @@
             <% @categories.each do |category| %>
             <tr>
               <td><%= category.name %></td>
-              <td><%= link_to '編集', edit_admin_category_path(category), class: 'btn btn-success' %></td>
+              <td><%= link_to '編集', edit_admin_category_path(category), class: 'btn btn-success' %>
+                  <%= link_to '削除', admin_category_path(category), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+              </td>
             </tr>
             <% end %>
           </tbody>

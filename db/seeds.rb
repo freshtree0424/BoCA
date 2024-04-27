@@ -12,7 +12,7 @@ TEST_PASSWORD = ENV["TEST_PASSWORD"]
 
 #管理者ログイン
 Admin.create!(
-   email: 'boca@gmail.com',
+   email: 'boca@example.com',
    password: '123456',
    password_confirmation: "123456"
 )
@@ -174,6 +174,18 @@ initial_tag_relationships = [
   {
     tag_id: 1,
     post_id: 3,
+  },
+  {
+    tag_id: 1,
+    post_id: 4,
+  },
+  {
+    tag_id: 1,
+    post_id: 5,
+  },
+  {
+    tag_id: 1,
+    post_id: 6,
   },
 ]
 TagRelationship.create(initial_tag_relationships)
