@@ -1,10 +1,5 @@
 <div class="container">
-  <h4><%= @user.name %>さんのページ
-    <% if @user == current_user %>
-    <%= link_to '新規投稿', new_post_path, class: "btn btn-sm btn-success" %>
-    <%= link_to 'ユーザー情報変更', edit_user_path, class: "btn btn-sm btn-success" %>
-    <% end %></h4>
-
+  <h4><%= @user.name %>さんのページ</h4>
     <div class="row">
       <div class="col-4">
        <%= image_tag @user.get_profile_image, size: '70x70' %>

@@ -11,8 +11,8 @@ class Public::EmotionalitiesController < ApplicationController
   end
 
   def create
-    @emotionalities = Emotionality.all
     @emotionality = EmotionalityAnswer.new
+    @emotionalities = Emotionality.all
     @answers = []
     #eachでemotionality_answerのk(key)とv(value)をemotionality_answer_id毎に処理
     params[:emotionality_answer].each do |k, v|
