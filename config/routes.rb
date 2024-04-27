@@ -19,12 +19,20 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
-    post "/guest_sign_in", to: "homes#guest_sign_in", as: :guest_sign_in
+    get "/analysis/top" => "analyses#top"
+    get "/analyses/:id" => "analyses#show", as: "analysis"
+    get "/analyses/detail/:id" => "analyses#detail", as: "analysis_detail"
+    post "/guest_sign_in" => "homes#guest_sign_in", as: :guest_sign_in
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :index, :update, :destroy]
     resources :tags, only:[:index]
+    resources :emotionalities, only:[:new, :create, :update]
+    resources :extraversions, only:[:new, :create, :update]
+    resources :controllabilities, only:[:new, :create, :update]
+    resources :attachments, only:[:new, :create, :update]
+    resources :playabilities, only:[:new, :create, :update]
   end
 
   # 管理者用
@@ -32,12 +40,21 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/search" => "homes#search"
     get "/search_tag" => "posts#search_tag"
+    get "/analysis" => "analyses#index"
+    get "/questions" => "questions#index", as: "questions"
+    get "/questions/select" => "questions#select", as: "questions_select"
+    get "/questions/search" => "questions#search", as: "questions_search"
     resources :posts, only: [:index, :show, :update, :destroy] do
       resources :post_comments, only: [:destroy]
     end
     resources :users, only: [:index, :show]
-    resources :categories, only: [:index, :create, :edit, :update]
+    resources :categories, only: [:index, :create, :edit, :update, :destroy]
     resources :tags, only:[:index]
+    resources :emotionalities, only:[:new, :create, :update, :edit, :index, :destroy]
+    resources :extraversions, only:[:new, :create, :update, :edit, :index, :destroy]
+    resources :controllabilities, only:[:new, :create, :update, :edit, :index, :destroy]
+    resources :attachments, only:[:new, :create, :update, :edit, :index, :destroy]
+    resources :playabilities, only:[:new, :create, :update, :edit, :index, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

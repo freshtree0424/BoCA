@@ -4,10 +4,11 @@ class Public::UsersController < PublicController
 
   def index
     if params[:search].present?
-      @users = User.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+      search_users = User.select { |user| user.name.include?(params[:search]) }
+      @users = Kaminari.paginate_array(search_users).page(params[:page])
       @heading = "「#{params[:search]}」の検索結果"
     else
-      @users = User.all
+      @users = User.page(params[:page])
       @heading = "会員一覧"
     end
   end
@@ -19,13 +20,17 @@ class Public::UsersController < PublicController
       redirect_to root_path
       return
     end
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc).page(params[:page])
     @post = Post.new
     @tag_lists = {}
     @posts.each do |post|
       @tag_lists[post.id] = post.tags.pluck(:name).join(',')
     end
-    # byebug
+    @emotionality_total_score, @emotionality_grade = EmotionalityAnswer.total_score_and_grade_for_user(@user)
+    @extraversion_total_score, @extraversion_grade = ExtraversionAnswer.total_score_and_grade_for_user(@user)
+    @controllability_total_score, @controllability_grade = ControllabilityAnswer.total_score_and_grade_for_user(@user)
+    @attachment_total_score, @attachment_grade = AttachmentAnswer.total_score_and_grade_for_user(@user)
+    @playability_total_score, @playability_grade = PlayabilityAnswer.total_score_and_grade_for_user(@user)
   end
 
   def edit

@@ -181,6 +181,13 @@ ja:
   time:
     formats:
       # default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-      default: "%Y/%m/%d %H:%M:%S"
+      default: "%m/%d %H:%M"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+  views:
+  #kaminariのページネーション
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"

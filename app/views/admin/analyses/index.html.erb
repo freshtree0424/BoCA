@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>性格分析一覧</h2>
+  <%= link_to '質問一覧',  admin_questions_path, class: "btn btn-sm btn-primary" %>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr align="canter">
+          <th scope="col"></th>
+          <th scope="col">名前</th>
+          <th scope="col">神経症傾向</th>
+          <th scope="col">外向性</th>
+          <th scope="col">誠実性</th>
+          <th scope="col">調和性</th>
+          <th scope="col">開放性</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr align="canter">
+          <th scope="row"><%= image_tag user.get_profile_image, size: '70x70' %></th>
+          <td><%= user.name %></td>
+          <% score, grade = EmotionalityAnswer.total_score_and_grade_for_user(user) %>
+          <td><%= "#{score}" %></td>
+          <% score, grade = ExtraversionAnswer.total_score_and_grade_for_user(user) %>
+          <td><%= "#{score}" %></td>
+          <% score, grade = ControllabilityAnswer.total_score_and_grade_for_user(user) %>
+          <td><%= "#{score}" %></td>
+          <% score, grade = AttachmentAnswer.total_score_and_grade_for_user(user) %>
+          <td><%= "#{score}" %></td>
+          <% score, grade = PlayabilityAnswer.total_score_and_grade_for_user(user) %>
+          <td><%= "#{score}" %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= paginate @users %>
+  </div>
+</div>

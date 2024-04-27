@@ -1,0 +1,45 @@
+<canvas id="myRadarChart"></canvas>
+ <script>
+ var ctx = document.getElementById("myRadarChart");
+ var myRadarChart = new Chart(ctx, {
+   type: 'radar',
+   data: {
+     labels: ['神経症傾向', '外向性', '誠実性', '調和性', '開放性'],
+     datasets: [
+       {
+         label: '日本人平均',
+         data: [35, 31, 29, 32, 35],
+         borderColor: "rgba(255,0,0,1)",
+         backgroundColor: "rgba(0,0,0,0)"
+       },
+       {
+         label: '<%= user.name %>さん',
+         data: [
+           <%= emotionality_total_score || 0 %>,
+           <%= extraversion_total_score || 0 %>,
+           <%= controllability_total_score || 0 %>,
+           <%= attachment_total_score || 0 %>,
+           <%= playability_total_score || 0 %>
+         ],
+         borderColor: "rgba(0,0,255,1)",
+         backgroundColor: "rgba(0,0,0,0)"
+       }
+     ],
+   },
+   options: {
+     title: {
+       display: true,
+     },
+     scale:{
+       ticks:{
+         suggestedMax: 50,
+         suggestedMin: 0,
+         stepSize: 10,
+         callback: function(value, index, values){
+           return  value
+         }
+       }
+     }
+   }
+ });
+</script>

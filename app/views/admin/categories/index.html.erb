@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-12 col-md-8 offset-md-2">性格分析カテゴリー</h1>
+  </div>
+  <%= render "admin/shared/error_messages", resource: @category %>
+  <%= form_with model: @category, url: admin_categories_path, class: 'form-group' do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <%= f.text_field :name, size: 50, placeholder: 'カテゴリー名を入力してください', class: 'form-control' %>
+      </div>
+      <div class="col-12 col-md-2 mt-2 mt-md-0">
+        <%= f.submit "新規登録", class: 'btn btn-success btn-block' %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <div class="offset-lg-2 col-lg-8">
+        <table class="table">
+          <thead align="center" class="table-dark">
+            <tr>
+              <th>カテゴリー</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody align="center">
+            <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.name %></td>
+              <td><%= link_to '編集', edit_admin_category_path(category), class: 'btn btn-success' %>
+                  <%= link_to '削除', admin_category_path(category), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+          <%= paginate @categories %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
