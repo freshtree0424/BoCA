@@ -1,4 +1,5 @@
 class Admin::UsersController < AdminController
+  before_action :authenticate_admin!
 
   def index
     if params[:search].present?

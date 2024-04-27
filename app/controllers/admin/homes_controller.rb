@@ -1,4 +1,6 @@
 class Admin::HomesController < AdminController
+  before_action :authenticate_admin!
+  
   def top
     @posts = Post.all.order(created_at: :desc).page(params[:page])
     @tag_lists = {}

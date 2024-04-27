@@ -1,5 +1,6 @@
 class Admin::QuestionsController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
     @emotionalities = Emotionality.all
     @extraversions = Extraversion.all
