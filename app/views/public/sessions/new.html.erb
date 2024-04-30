@@ -1,24 +1,27 @@
 <div class="container">
   <h2>ユーザーログイン</h2>
-    <div class="row">
-      <%= form_with model: @user, url: user_session_path do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
-        <div class="col">
-          <div class="field">
-            <%= f.label :email, "メールアドレス" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "name", class: "form-control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :password, "パスワード" %>
-            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-          </div>
-
-          <div class="actions">
-            <%= f.submit "ログイン", class: "btn btn-success btn-lg btn-block" %>
-          </div>
-        <% end %>
-        <%= render "public/shared/links" %>
-      </div>
+  <div class="row">
+    <%= form_with model: @user, url: user_session_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+      <div class="col">
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "name", class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :password, "パスワード" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "ログイン", class: "btn btn-success btn-lg btn-block" %>
+        </div>
+      <% end %>
+      <%= render "public/shared/links" %>
     </div>
+  </div>
+  <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
+    <div class="col">
+      <p>管理者ログインは<%= link_to "こちら", admin_session_path %>から</p>
+    </div>
+  </div>
 </div>
