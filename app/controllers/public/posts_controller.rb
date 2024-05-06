@@ -114,7 +114,7 @@ class Public::PostsController < PublicController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :body, :score)
+    params.require(:post).permit(:user_id, :title, :body, :star, :score)
   end
 
   def tag_params
