@@ -52,6 +52,7 @@ class Public::PostsController < PublicController
 
   def create
     @post = Post.new(post_params)
+    @post.score = Language.get_data(post_params[:body])
     @post.user = current_user
     tags = params[:post][:name].split(',')
    if @post.save
