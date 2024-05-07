@@ -10,7 +10,8 @@ module BoCA
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    #'lib'の読み込み
+    config.paths.add 'lib', eager_load: true
     #エラーやenumを日本語対応
     config.i18n.default_locale = :ja
 

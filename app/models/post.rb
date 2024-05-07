@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
-  validates :score, presence: true
+  validates :star, presence: true
 
   #タグ付けの新規投稿用メソッド
   def save_tags(tags)

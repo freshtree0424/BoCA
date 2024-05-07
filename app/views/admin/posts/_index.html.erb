@@ -6,7 +6,7 @@
       <th>本のタイトル</th>
       <th>感想</th>
       <th>タグ</th>
-      <th>スコア</th>
+      <th>星評価<br>感情分析スコア</th>
       <th></th>
       <th></th>
     </tr>
@@ -22,7 +22,9 @@
               <i class="fa-solid fa-tag"></i><%= link_to tag_name, admin_search_tag_path(tag_name: tag_name) %>
             <% end %>
         </td>
-        <td><%= render "admin/posts/static_rate", post: post %></td>
+        <td><%= render "admin/posts/static_rate", post: post %>
+            <%= post.score %>
+        </td>
         <td><i class="fa-solid fa-comment-dots"></i><%= "#{post.post_comments.count}" %></td>
         <td><i class="fa-solid fa-eye"></i><%= post.view_counts.count %></td>
       </tr>

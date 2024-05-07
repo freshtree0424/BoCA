@@ -29,6 +29,10 @@
             <td><%= @post.body %></td>
           </tr>
           <tr>
+            <th scope="row">感情分析スコア</th>
+            <td><%= @post.score %></td>
+          </tr>
+          <tr>
             <th scope="row">タグ</th>
             <td><% @tags.each do |tag| %>
                       <i class="fa-solid fa-tag"></i>

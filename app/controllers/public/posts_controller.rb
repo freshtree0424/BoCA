@@ -52,6 +52,7 @@ class Public::PostsController < PublicController
 
   def create
     @post = Post.new(post_params)
+    @post.score = Language.get_data(post_params[:body])
     @post.user = current_user
     tags = params[:post][:name].split(',')
    if @post.save
@@ -71,6 +72,7 @@ class Public::PostsController < PublicController
       redirect_to root_path
       return
     end
+    @post.score = Language.get_data(post_params[:body])
     tags = params[:post][:name].split(',')
     if @post.update(post_params)
       @post.update_tags(tags)
@@ -114,7 +116,7 @@ class Public::PostsController < PublicController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :body, :score)
+    params.require(:post).permit(:user_id, :title, :body, :star, :score)
   end
 
   def tag_params

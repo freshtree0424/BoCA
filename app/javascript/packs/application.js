@@ -13,8 +13,6 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 
-// グラフ導入
-// import Chart from "chart.js/auto";
 
 Rails.start()
 Turbolinks.start()
