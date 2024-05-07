@@ -72,6 +72,7 @@ class Public::PostsController < PublicController
       redirect_to root_path
       return
     end
+    @post.score = Language.get_data(post_params[:body])
     tags = params[:post][:name].split(',')
     if @post.update(post_params)
       @post.update_tags(tags)
