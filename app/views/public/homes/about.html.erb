@@ -1,37 +1,65 @@
+<style>
+  h4 {
+    font-weight: bold;
+  }
+  .text {
+    margin: 15px;
+    font-size: 25px;
+  }
+  .col {
+    text-align: center;
+  }
+  .btn-success{
+    width: 500px;
+    height: 100px;
+    font-size: 30px;
+    margin: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 100px;
+  }
+</style>
+
 <div class="container">
   <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
     <div class="col">
       <h4>本サイトは、あなたの性格を分析し、<br>
           解説したのちに投稿していただくレビューサイトです</h4>
-        <%= link_to "性格分析をやってみる", analysis_top_path, class: "btn btn-success btn-lg btn-block", style: "width: 500px; height: 100px; font-size: 30px;padding:30px;" %>
+        <%= link_to "性格分析をやってみる", analysis_top_path, class: "btn btn-success btn-lg btn-block" %>
       <p>性格分析にはログインが必要です。新規登録は<%= link_to "こちら", new_user_registration_path %>から</p>
 
-      <h4>本サイトにて性格分析の参考にしたビッグファイブ理論について</h4>
-      <p>ビッグファイブ理論とは<br>
-      1990年代にルイス・R・ゴールドバーグという心理学者が提唱した、<br>
-      人間の性格を5つの基本的な因子で説明しようとする心理学の理論のことです。<br>
-      人の性格は「外向性」「誠実性」「調和性」「開放性」「神経質的傾向」の5つの因子から成り立つとされています。<br>
-      ビッグファイブ理論は、これらの5つの因子が個人の性格を幅広くカバーしていると考えています。<br>
-      5つの因子の高低や組み合わせが、個人の特徴や振る舞いの傾向を理解するのに役立つため、<br>
-      人材配置やコミュニケーションなどさまざまな場面で応用できるのです。<br>
-      https://service.gakujo.ne.jp/jinji-library/soshiki/00078/<br>
-      あさがくナビ　人事の図書館より</p>
+      <h4>本サイトにて性格分析の参考にした</h4>
+      <h4>ビッグファイブ理論(5因子モデル)  FFPQ  について  </h4>
 
-      <p>つまり、５つの因子の高い低いから個人の特徴や性格の理解を深めることができます。</p>
-      <p>また、高いから良い、低いから悪いという考え方ではなく、<br>
-      それぞれの良さを持っているという考え方をするのがビッグファイブ理論です。</p>
-
-      <p>本サイトでは、性格分析を行い、その性格に紐づけた投稿やコメントをすることで、</p>
-
-      <p>自分と同じ性格の方の投稿はどんなものなのか</p>
-
-      <p>別の性格特性が高い、低い人はどの様な視点で投稿したのか</p>
-
-      <p>という観点からレビューして頂くサイトです。</p>
-
-      <p>興味が湧いてきたら、↓のボタンから性格診断へお進みください</p>
-
-      <%= link_to "性格分析をやってみる", analysis_top_path, class: "btn btn-success btn-lg btn-block", style: "width: 500px; height: 100px; font-size: 30px;padding:30px;" %>
+      <div class="text">
+        ビッグファイブ理論(5因子モデル)とは<br>
+        人間の性格特性は5つの軸によって構成されていると考える理論です。<br>
+        5つの軸はそれぞれ
+        【開放性】【誠実性】【外向性】【協調性】【神経症傾向】と定義され、<br>
+        それぞれの軸が【高い】【低い】で複数の特性を測定します。<br>
+      </div>
+      <div class="text">
+        ビッグファイブ理論は最も有力なモデルであり<br>
+        基本的な枠組みとして性格心理学において定着していますが、<br>
+        文化圏が違うと精度が落ちるのではないか？(仏教やキリスト教、島国と大陸など)<br>
+        と考えた研究会は日本人向けビッグファイブ理論として【FFPQ】を作成しました。<br>
+      </div>
+      <div class="text">
+        本サイトではFFPQ-50というFFPQの質問を簡略化した研究結果を元に性格分析を行い、<br>
+        性格毎の投稿検索や価値観・考え方に触れるサイトです。<br>
+      </div>
+      <div class="text">
+        【開放性】が高い方は知的好奇心が旺盛な傾向があるので<br>様々なジャンルの作品に触れるかもしれません。<br>
+        【外向性】の高い方は他人と関わるのが好きな傾向があるので<br>コメントが活発になるかもしれません。<br>
+        【協調性】が低い方は自分の事に時間を使いたい傾向があるので<br>投稿はせずにレビューを閲覧するだけかもしれません。<br>
+      </div>
+      <div class="text">
+        性格特性を知ることで自分はどのような観点から作品を楽しんだのか、<br>
+        また別の性格特性の方はどのような見方をしたのか、<br>
+        コメントやレビューを通じてお楽しみください。
+      </div>
+      <%= link_to "性格分析をやってみる", analysis_top_path, class: "btn btn-success btn-lg" %>
       <p>性格分析にはログインが必要です。新規登録は<%= link_to "こちら", new_user_registration_path %>から</p>
     </div>
   </div>

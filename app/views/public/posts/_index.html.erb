@@ -1,36 +1,35 @@
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>投稿時間</th>
-      <th></th>
-      <th>本のタイトル</th>
-      <th>感想</th>
-      <th>タグ</th>
-      <th>星評価<br>感情分析スコア</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<style>
+  .fixed-card {
+    width: 20rem;
+    height: 30rem;
+    margin: 5px;
+    overflow: auto;
+  }
+</style>
+
+<div class="container">
+  <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
     <% posts.each do |post| %>
-      <tr>
-        <td><%= l post.created_at %></td>
-        <td><%= image_tag post.user.get_profile_image, size: '50x50' %></td>
-        <td><%= link_to post.title, post_path(post.id) %></td>
-        <td><%= post.body.truncate(20) %></td>
-        <td><% tag_lists[post.id].split(',').each do |tag_name| %>
-              <i class="fa-solid fa-tag"></i><%= link_to tag_name, search_tag_path(tag_name: tag_name) %>
-            <% end %>
-        </td>
-        <td><%= render "public/posts/static_rate", post: post %>
-            <%= post.score %>
-        </td>
-        <td><i class="fa-solid fa-comment-dots"></i><%= "#{post.post_comments.count}" %></td>
-        <td><i class="fa-solid fa-eye"></i><%= post.view_counts.count %></td>
-      </tr>
+      <div class="card bg-light mb-3 fixed-card">
+        <div class="card-header"><%= image_tag post.user.get_profile_image, size: '50x50' %></div>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
+          <p class="card-text"><%= post.body %></p>
+          <p class="card-tag"><% tag_lists[post.id].split(',').each do |tag_name| %>
+                    <i class="fa-solid fa-tag"></i><%= link_to tag_name, search_tag_path(tag_name: tag_name) %>
+                  <% end %></p>
+          <p class="card-star"><%= render "public/posts/static_rate", post: post %>
+                  <%= post.score %></p>
+          <p class="card-comment">
+            <i class="fa-solid fa-comment-dots"></i><%= "#{post.post_comments.count}" %>
+            <i class="fa-solid fa-eye"></i><%= post.view_counts.count %>
+          </p>
+          <p class="card-time"><%= l post.created_at %></p>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<div class="d-flex justify-content-center">
-  <%= paginate posts %>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= paginate posts %>
+  </div>
 </div>
