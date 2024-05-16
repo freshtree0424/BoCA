@@ -1,36 +1,40 @@
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>投稿時間</th>
-      <th></th>
-      <th>本のタイトル</th>
-      <th>感想</th>
-      <th>タグ</th>
-      <th>星評価<br>感情分析スコア</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% posts.each do |post| %>
-      <tr>
-        <td><%= l post.created_at %></td>
-        <td><%= image_tag post.user.get_profile_image, size: '50x50' %></td>
-        <td><%= link_to post.title, admin_post_path(post) %></td>
-        <td><%= post.body.truncate(20) %></td>
-        <td><% tag_lists[post.id].split(',').each do |tag_name| %>
-              <i class="fa-solid fa-tag"></i><%= link_to tag_name, admin_search_tag_path(tag_name: tag_name) %>
-            <% end %>
-        </td>
-        <td><%= render "admin/posts/static_rate", post: post %>
-            <%= post.score %>
-        </td>
-        <td><i class="fa-solid fa-comment-dots"></i><%= "#{post.post_comments.count}" %></td>
-        <td><i class="fa-solid fa-eye"></i><%= post.view_counts.count %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<div class="d-flex justify-content-center">
-  <%= paginate posts %>
+<div class="container">
+  <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th>投稿時間</th>
+          <th></th>
+          <th>本のタイトル</th>
+          <th>感想</th>
+          <th>タグ</th>
+          <th>星評価<br>感情分析スコア</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% posts.each do |post| %>
+          <tr>
+            <td><%= l post.created_at %></td>
+            <td><%= image_tag post.user.get_profile_image, size: '50x50' %></td>
+            <td><%= link_to post.title, admin_post_path(post) %></td>
+            <td><%= post.body.truncate(20) %></td>
+            <td><% tag_lists[post.id].split(',').each do |tag_name| %>
+                  <i class="fa-solid fa-tag"></i><%= link_to tag_name, admin_search_tag_path(tag_name: tag_name) %>
+                <% end %>
+            </td>
+            <td><%= render "admin/posts/static_rate", post: post %>
+                <%= post.score %>
+            </td>
+            <td><i class="fa-solid fa-comment-dots"></i><%= "#{post.post_comments.count}" %></td>
+            <td><i class="fa-solid fa-eye"></i><%= post.view_counts.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <%= paginate posts %>
+    </div>
+  </div>
 </div>

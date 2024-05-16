@@ -9,7 +9,7 @@
         <%= f.text_field :name, size: 50, placeholder: 'カテゴリー名を入力してください', class: 'form-control' %>
       </div>
       <div class="col-12 col-md-2 mt-2 mt-md-0">
-        <%= f.submit "新規登録", class: 'btn btn-success btn-block' %>
+        <%= f.submit "新規登録", class: 'btn btn-primary' %>
       </div>
     </div>
   <% end %>
@@ -28,7 +28,7 @@
             <tr>
               <td><%= category.name %></td>
               <td><%= link_to '編集', edit_admin_category_path(category), class: 'btn btn-success' %>
-                  <%= link_to '削除', admin_category_path(category), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+                  <%= link_to '削除', admin_category_path(category), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%>
               </td>
             </tr>
             <% end %>
