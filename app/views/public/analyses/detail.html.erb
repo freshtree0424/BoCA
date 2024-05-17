@@ -16,6 +16,15 @@ $(document).ready(function(){
     });
 });
 </script>
+<style>
+  .row {
+    margin: 5px 0 5px 0;
+  }
+
+  table {
+    padding: 10px;
+  }
+</style>
 
 <div class="container">
       <h2><%= @user.name %>さんの性格分析内訳</h2><br>
@@ -26,7 +35,7 @@ $(document).ready(function(){
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">神経症傾向</th>
+            <th scope="col">神経症傾向<br>/情動性</th>
             <th scope="col">点数</th>
             <th scope="col">項目説明</th>
           </tr>
@@ -138,7 +147,7 @@ $(document).ready(function(){
           <tr>
             <th scope="row">注意獲得</th>
             <td><%= @extraversion5_answers %></td>
-            <td data-toggle="tooltip" data-placement="top" title="高め→目立つことが好き、他人の目をとても気にする <br> 低め→目立つことが苦手、他人の目を気にしない">目立ったり他人に注目されたりする性質</td>
+            <td data-toggle="tooltip" data-placement="top" title="高め→他人からどう見られているかに敏感、目立ちたい <br> 低め→他人の目を気にしない">目立ったり他人に注目されたりする性質</td>
           </tr>
         </tbody>
       </table>
@@ -192,7 +201,7 @@ $(document).ready(function(){
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">誠実性</th>
+            <th scope="col">誠実性<br>/統制性</th>
             <th scope="col">点数</th>
             <th scope="col">項目説明</th>
           </tr>
@@ -275,7 +284,7 @@ $(document).ready(function(){
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">調和性</th>
+            <th scope="col">調和性<br>/愛着性</th>
             <th scope="col">点数</th>
             <th scope="col">項目説明</th>
           </tr>
@@ -358,7 +367,7 @@ $(document).ready(function(){
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">開放性</th>
+            <th scope="col">開放性<br>/遊戯性</th>
             <th scope="col">点数</th>
             <th scope="col">項目説明</th>
           </tr>
@@ -380,7 +389,7 @@ $(document).ready(function(){
             <td data-toggle="tooltip" data-placement="top" title="高め→芸術への関心が高く、美しいものが好きで、創造的経験を求めている <br> 低め→芸術への関心が低く、芸術的活動や創造的活動への興味が薄い">芸術への関心がある性質</td>
           </tr>
           <tr>
-            <th scope="row">内向経験への敏感</th>
+            <th scope="row">内向経験<br>への敏感</th>
             <td><%= @playability4_answers %></td>
             <td data-toggle="tooltip" data-placement="top" title="高め→自分の感情を自覚していて、感情の表し方を知っている <br> 低め→自分の感情について考えたり、感情を表に出すことがあまりない">自分への関心や感情が高い性質</td>
           </tr>
