@@ -1,3 +1,25 @@
+<style>
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  th {
+    padding: 20px;
+    text-align: center;
+    font-size: 15px;
+  }
+  th:first-child {
+    width: 10%;
+  }
+  th:not(:first-child) {
+    width: calc(90% / 6);
+  }
+  td {
+    padding: 20px;
+    text-align: center;
+  }
+</style>
+
 <div class="container">
   <h2>性格分析一覧 <%= link_to '質問一覧',  admin_questions_path, class: "btn btn-sm btn-primary" %></h2>
   <div class="row">
@@ -6,28 +28,37 @@
         <tr align="canter">
           <th scope="col"></th>
           <th scope="col">名前</th>
-          <th scope="col">神経症傾向</th>
+          <th scope="col">神経症傾向/情動性</th>
           <th scope="col">外向性</th>
-          <th scope="col">誠実性</th>
-          <th scope="col">調和性</th>
-          <th scope="col">開放性</th>
+          <th scope="col">誠実性/統制性</th>
+          <th scope="col">調和性/愛着性</th>
+          <th scope="col">開放性/遊戯性</th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
         <tr align="canter">
-          <th scope="row"><%= image_tag user.get_profile_image, size: '70x70' %></th>
+          <td><%= link_to admin_user_path(user) do %>
+              <%= image_tag user.get_profile_image, size: '70x70' %>
+              <% end %>
+          </td>
           <td><%= user.name %></td>
-          <% score, grade = EmotionalityAnswer.total_score_and_grade_for_user(user) %>
+
+            <% score, grade = EmotionalityAnswer.total_score_and_grade_for_user(user) %>
           <td><%= "#{score}" %></td>
-          <% score, grade = ExtraversionAnswer.total_score_and_grade_for_user(user) %>
+
+            <% score, grade = ExtraversionAnswer.total_score_and_grade_for_user(user) %>
           <td><%= "#{score}" %></td>
-          <% score, grade = ControllabilityAnswer.total_score_and_grade_for_user(user) %>
+
+            <% score, grade = ControllabilityAnswer.total_score_and_grade_for_user(user) %>
           <td><%= "#{score}" %></td>
-          <% score, grade = AttachmentAnswer.total_score_and_grade_for_user(user) %>
+
+            <% score, grade = AttachmentAnswer.total_score_and_grade_for_user(user) %>
           <td><%= "#{score}" %></td>
-          <% score, grade = PlayabilityAnswer.total_score_and_grade_for_user(user) %>
+
+            <% score, grade = PlayabilityAnswer.total_score_and_grade_for_user(user) %>
           <td><%= "#{score}" %></td>
+
         </tr>
       </tbody>
       <% end %>

@@ -20,7 +20,7 @@ class Public::UsersController < PublicController
       redirect_to root_path
       return
     end
-    @posts = @user.posts.order(created_at: :desc).page(params[:page])
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(3)
     @post = Post.new
     @tag_lists = {}
     @posts.each do |post|

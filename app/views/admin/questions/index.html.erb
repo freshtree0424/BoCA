@@ -2,7 +2,6 @@
   <h2>質問一覧  <%= render 'admin/questions/link' %></h2>
   <%= render 'admin/questions/model_tab' %>
   <div class="row d-flex justify-content-center" style=" height: auto; margin: 30px 0;">
-    <div></div>
     <table class="table">
       <thead>
         <tr>
@@ -10,6 +9,8 @@
           <th scope="col">項目</th>
           <th scope="col">カテゴリー</th>
           <th scope="col">質問項目</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -20,7 +21,7 @@
           <td><%= emotionality.category.name %></td>
           <td><%= emotionality.question %></td>
           <td><%= link_to '編集', edit_admin_emotionality_path(emotionality), class: 'btn btn-success' %></td>
-          <td><%= link_to '削除', admin_emotionality_path(emotionality), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <td><%= link_to '削除', admin_emotionality_path(emotionality), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%></td>
         </tr>
         <% end %>
         <% @extraversions.each do |extraversion| %>
@@ -30,7 +31,7 @@
           <td><%= extraversion.category.name %></td>
           <td><%= extraversion.question %></td>
           <td><%= link_to '編集', edit_admin_extraversion_path(extraversion), class: 'btn btn-success' %></td>
-          <td><%= link_to '削除', admin_extraversion_path(extraversion), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <td><%= link_to '削除', admin_extraversion_path(extraversion), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%></td>
         </tr>
         <% end %>
         <% @controllabilities.each do |controllability| %>
@@ -40,7 +41,7 @@
           <td><%= controllability.category.name %></td>
           <td><%= controllability.question %></td>
           <td><%= link_to '編集', edit_admin_controllability_path(controllability), class: 'btn btn-success' %></td>
-          <td><%= link_to '削除', admin_controllability_path(controllability), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <td><%= link_to '削除', admin_controllability_path(controllability), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%></td>
         </tr>
         <% end %>
         <% @attachments.each do |attachment| %>
@@ -50,7 +51,7 @@
           <td><%= attachment.category.name %></td>
           <td><%= attachment.question %></td>
           <td><%= link_to '編集', edit_admin_attachment_path(attachment), class: 'btn btn-success' %></td>
-          <td><%= link_to '削除', admin_attachment_path(attachment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <td><%= link_to '削除', admin_attachment_path(attachment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%></td>
         </tr>
         <% end %>
         <% @playabilities.each do |playability| %>
@@ -60,7 +61,7 @@
           <td><%= playability.category.name %></td>
           <td><%= playability.question %></td>
           <td><%= link_to '編集', edit_admin_playability_path(playability), class: 'btn btn-success' %></td>
-          <td><%= link_to '削除', admin_playability_path(playability), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <td><%= link_to '削除', admin_playability_path(playability), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%></td>
         </tr>
         <% end %>
       </tbody>
