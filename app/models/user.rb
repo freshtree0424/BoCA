@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
 
   #バリテーション
-  validates :name, presence: true, uniqueness: true, unless: :new_record?
+  validates :name, presence: true, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 
   has_one_attached :profile_image

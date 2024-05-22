@@ -43,7 +43,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -68,7 +68,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   #サインアップ後マイページへ遷移
   def after_sign_up_path_for(resource)
-    flash[:new] = "必要事項を記入してください"
-    edit_user_path(resource)
+    flash[:notice] = "新規登録しました"
+    user_path(resource)
   end
 end
