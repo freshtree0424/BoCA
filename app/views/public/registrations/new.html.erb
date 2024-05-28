@@ -1,29 +1,34 @@
 <div class="container">
-  <h2>新規登録</h2>
     <div class="row">
-      <%= form_with model: @user, url: user_registration_path do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
-        <div class="col">
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+          <%= form_with model: @user, url: user_registration_path do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+            <h2>新規登録</h2>
+            <div class="field">
+              <%= f.label :name, "名前" %><br />
+              <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            </div>
+
             <div class="field">
               <%= f.label :email, "メールアドレス" %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
             </div>
-          
+
             <div class="field">
               <%= f.label :password, "パスワード" %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> 文字以上)</em>
               <% end %><br />
-              <%= f.password_field :password, autocomplete: "new-password" %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
             </div>
-          
+
             <div class="field">
               <%= f.label :password_confirmation, "パスワード(再確認)" %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
             </div>
-          
+
             <div class="actions">
-              <%= f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
+              <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
             </div>
           <% end %>
           <%= render "public/shared/links" %>

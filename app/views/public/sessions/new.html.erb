@@ -1,9 +1,9 @@
 <div class="container">
-  <h2>ユーザーログイン</h2>
   <div class="row">
-    <%= form_with model: @user, url: user_session_path do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
       <div class="col">
+      <%= form_with model: @user, url: user_session_path do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+      <h2>ユーザーログイン</h2>
         <div class="field">
           <%= f.label :email, "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "name", class: "form-control" %>
@@ -13,7 +13,7 @@
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
         <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-success btn-lg btn-block" %>
+          <%= f.submit "ログイン", class: "btn btn-success btn-lg" %>
         </div>
       <% end %>
       <%= render "public/shared/links" %>
